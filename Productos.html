@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="PRACTIK-BOX — Diseños personalizados en madera" />
+    <meta name="description" content="Somos especialistas en crear muebles únicos que se adaptan a tus necesidades y espacios. Cada pieza es fabricada con madera de la más alta calidad." />
+    <meta name="author" content="A Regular Page by EduardoPP & AlejandroSC">
+    <meta name="robots" content="index, follow">
+    <meta name="copyright" content="PRACTIK-BOX" />
+    <title>Colecciones - PRACTIK-BOX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="Imagenes/Index/icon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ===== HERO PRODUCTOS ===== */
+        .hero-productos {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Imagenes/Productos/Hero-Productos.png');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-productos h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero-content-productos {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== SECCIÓN MUKER (LAS 6 TARJETAS) ===== */
+        .categorias-muker {
+            padding: 2rem 0 4rem 0;
+            background: #fff;
+        }
+        .muker-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .muker-card {
+            position: relative;
+            height: 260px;
+            border-radius: 0;
+            overflow: hidden;
+            display: block;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .muker-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .muker-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .muker-card:hover img { transform: scale(1.05); }
+        .muker-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 20px;
+            text-align: center;
+            background: rgba(0,0,0,0.25);
+            backdrop-filter: blur(6px);
+            color: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .muker-overlay h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            color: black;
+        }
+        .muker-overlay span {
+            display: block;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            font-family: "Open Sans", sans-serif;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+        .muker-overlay span::before,
+        .muker-overlay span::after {
+            content: "";
+            display: inline-block;
+            width: 30px;
+            height: 1px;
+            background: white;
+            margin: 0 10px;
+            vertical-align: middle;
+        }
+        .muker-overlay p {
+            margin-top: 10px;
+            font-size: 1rem;
+            font-family: "Open Sans", sans-serif;
+            opacity: 0.95;
+        }
+        /* Colores de fondo para cada colección (fallback si la imagen no carga) */
+        .verde { background: #2f3f35; }
+        .madera { background: #8c6a4f; }
+        .menta { background: #b9c7b7; }
+        .azul { background: #2c3a4a; }
+        .blanco { background: #d8d4ce; }
+        .terracota { background: #8b4b35; }
+
+        /* ===== INFO EXTRA (por qué elegirnos) ===== */
+        .info-extra {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        .info-item {
+            text-align: center;
+            padding: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            border-radius: 8px;
+        }
+        .info-item.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .info-item:hover {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 150%);
+            color: white;
+        }
+        .info-item:hover h3, .info-item:hover .info-icon { color: var(--color-neutral); }
+        .info-icon {
+            font-size: 3rem;
+            color: var(--color-icon);
+            margin-bottom: 1rem;
+        }
+
+        /* ===== WOOD NOTICE (aviso de madera) ===== */
+        .wood-notice {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(92, 75, 55, 0.1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .wood-notice.animated {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .wood-notice::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+            transform: translateX(-100%);
+            transition: transform 1s ease 0.3s;
+        }
+        .wood-notice.animated::before { transform: translateX(0); }
+        .notice-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .icon-container {
+            width: 60px;
+            height: 60px;
+            background-color: #f1e8d9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+        .tree-icon { font-size: 28px; color: #8b6b46; }
+        .notice-title { font-size: 28px; font-weight: 600; color: #5c4b37; }
+        .variations-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 35px 0;
+        }
+        .variation-item {
+            background-color: #f8f3ea;
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .wood-notice.animated .variation-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .wood-notice.animated .variation-item:nth-child(1) { transition-delay: 0.7s; }
+        .wood-notice.animated .variation-item:nth-child(2) { transition-delay: 0.9s; }
+        .wood-notice.animated .variation-item:nth-child(3) { transition-delay: 1.1s; }
+        .variation-item:hover {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 150%);
+            color: white;
+        }
+        .variation-item:hover .variation-title { color: white; }
+        .variation-title { font-size: 20px; font-weight: 600; color: var(--color-icon); }
+        /* ===== UTILIDADES ===== */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .muker-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .hero-productos h1 { font-size: 2.5rem; }
+            .hero-productos { height: 40vh; }
+            .muker-grid { grid-template-columns: 1fr; }
+            .muker-card { height: 220px; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .contact-content { grid-template-columns: 1fr; }
+            .notice-header { flex-direction: column; text-align: center; }
+            .icon-container { margin-right: 0; margin-bottom: 15px; }
+        }
+        @media (max-width: 480px) {
+            .muker-overlay h3 { font-size: 2rem; }
+            .muker-overlay p { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+<div id="header-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-productos" id="hero-productos">
+        <div class="container">
+            <div class="hero-content-productos">
+                <h1>Nuestras Colecciones</h1>
+                <p>Descubre líneas de diseño pensadas para cada espacio de tu hogar.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN PRINCIPAL: LAS 6 COLECCIONES (ESTILO MUKER) -->
+    <section class="categorias-muker">
+        <div class="container">
+            <div class="muker-grid">
+                <!-- Card 1: ÁUREA - Cocinas -->
+                <a href="#" class="muker-card verde">
+                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Colección Áurea - Cocinas">
+                    <div class="muker-overlay">
+                        <h3>ÁUREA</h3>
+                        <span>by PRACTIK</span>
+                        <p>Cocinas a medida</p>
+                    </div>
+                </a>
+                <!-- Card 2: RITUAL - Clósets -->
+                <a href="#" class="muker-card madera">
+                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Colección Ritual - Clósets">
+                    <div class="muker-overlay">
+                        <h3>RITUAL</h3>
+                        <span>by PRACTIK</span>
+                        <p>Clósets y vestidores a medida</p>
+                    </div>
+                </a>
+                <!-- Card 3: MARETO - Infantil -->
+                <a href="#" class="muker-card menta">
+                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Colección Mareto - Infantil">
+                    <div class="muker-overlay">
+                        <h3>MARETO</h3>
+                        <span>by PRACTIK</span>
+                        <p>Recámaras infantiles</p>
+                    </div>
+                </a>
+                <!-- Card 4: FOCO - Oficina -->
+                <a href="#" class="muker-card azul">
+                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Colección Foco - Oficina">
+                    <div class="muker-overlay">
+                        <h3>FOCO</h3>
+                        <span>by PRACTIK</span>
+                        <p>Mobiliario de oficina</p>
+                    </div>
+                </a>
+                <!-- Card 5: CALMA - Baño -->
+                <a href="#" class="muker-card blanco">
+                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Colección Calma - Baño">
+                    <div class="muker-overlay">
+                        <h3>CALMA</h3>
+                        <span>by PRACTIK</span>
+                        <p>Muebles de baño a medida</p>
+                    </div>
+                </a>
+                <!-- Card 6: DETALLE - Accesorios -->
+                <a href="#" class="muker-card terracota">
+                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Colección Detalle - Accesorios">
+                    <div class="muker-overlay">
+                        <h3>DETALLE</h3>
+                        <span>by PRACTIK</span>
+                        <p>Accesorios y complementos</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wood Notice (Aviso de madera natural) -->
+    <section class="wood-notice" id="wood-notice">
+        <div class="notice-header">
+            <div class="icon-container"><i class="fas fa-tree tree-icon"></i></div>
+            <h2 class="notice-title">Madera natural, piezas únicas</h2>
+        </div>
+        <p class="notice-content">Es importante que sepas que, al ser un producto elaborado con madera natural, cada pieza es única. Las imágenes son una representación, pero pueden existir variaciones en:</p>
+        <div class="variations-list">
+            <div class="variation-item">
+                <i class="fas fa-palette variation-icon" style="font-size: 2rem; margin-bottom: 10px; color: var(--color-primary);"></i>
+                <h3 class="variation-title">Color y Tono</h3>
+                <p>Dependiendo de la especie de madera y su lote. Cada árbol aporta su propia paleta.</p>
+            </div>
+            <div class="variation-item">
+                <i class="fas fa-ruler variation-icon" style="font-size: 2rem; margin-bottom: 10px; color: var(--color-primary);"></i>
+                <h3 class="variation-title">Veta y Textura</h3>
+                <p>Cada árbol tiene un dibujo natural distinto, como huellas dactilares.</p>
+            </div>
+            <div class="variation-item">
+                <i class="fas fa-circle variation-icon" style="font-size: 2rem; margin-bottom: 10px; color: var(--color-primary);"></i>
+                <h3 class="variation-title">Nudos y Marcas</h3>
+                <p>Son la "huella dactilar" de la madera y prueba de su autenticidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Información adicional (por qué elegirnos) -->
+    <section class="section">
+        <div class="container" id="info-extra">
+            <div class="info-extra">
+                <h2 class="fade-in">¿Por qué elegir nuestras colecciones?</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-award"></i></div>
+                        <h3>Calidad garantizada</h3>
+                        <p>Materiales sostenibles y artesanía experta en cada una de nuestras 6 líneas de diseño.</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-shipping-fast"></i></div>
+                        <h3>Envío seguro</h3>
+                        <p>Embalaje especializado para que tu colección llegue en perfecto estado.</p>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-ruler-combined"></i></div>
+                        <h3>Personalización</h3>
+                        <p>Cada colección se adapta a tus medidas y necesidades específicas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section class="contact-section" id="contacto">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-content">
+                    <div class="map-section">
+                        <div class="map-visual">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3748.102762546342!2d-98.72903212661991!3d20.04613797964586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842eeef8364d9bcf%3A0xd7ba69856107117d!2sHidrosistemas!5e0!3m2!1sen!2smx!4v1760387857696!5m2!1sen!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="contact-info-section">
+                        <h3>Contáctanos</h3>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Dirección</h4>
+                                    <p>Circuito Emprendedores No. 19, Parque Industrial Metropolitano, Mineral de la Reforma, Hgo. CP 42186</p>
+                                </div>
+                            </div>
+                            <div class="contact-container">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-text">
+                                <h4>Teléfonos</h4>
+                                <p>
+                                    <a href="tel:+527717132513">771 713 2513</a><br>
+                                    <a href="tel:+527717132514">771 713 2514</a><br>
+                                    <a href="tel:+527717181044">771 718 1044</a>
+                                </p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item whatsapp-item">
+                                <div class="contact-icon contact-whatsapp-icon">
+                                <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="contact-whatsapp">
+                                <h4>WhatsApp</h4>
+                                <p>
+                                    <a href="https://wa.me/52771712167150" target="_blank">771 712 167 150</a>
+                                </p>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Email</h4>
+                                    <p><a href="mailto:ventas@hidrosistemas.com.mx">ventas@hidrosistemas.com.mx</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Horario</h4>
+                                    <p>Lun-Vie: 9:00 AM - 6:00 PM</p>
+                                    <p>Sábado: 9:00 AM - 1:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <button class="btn-scroll-top" aria-label="Volver arriba">
+        <svg viewBox="0 0 24 24" width="24" fill="white"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+    </button>
+
+<div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    
+    <script>
+        // Script simplificado: solo animaciones y año actual
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Animaciones al hacer scroll
+            configurarAnimaciones();
+            
+            // Scroll suave al botón de volver arriba
+            document.querySelector('.btn-scroll-top').addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        function configurarAnimaciones() {
+            const elementos = document.querySelectorAll('.fade-in, .info-item, .wood-notice, .muker-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated', 'visible');
+                        
+                        // Animación especial para las tarjetas MUKER (efecto cascada)
+                        if (entry.target.classList.contains('muker-card')) {
+                            const cards = document.querySelectorAll('.muker-card');
+                            cards.forEach((card, index) => {
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'translateY(0)';
+                                }, index * 100);
+                            });
+                        }
+                    }
+                });
+            }, { threshold: 0.2, rootMargin: '0px' });
+            
+            elementos.forEach(el => {
+                if (el.classList.contains('muker-card')) {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                }
+                observer.observe(el);
+            });
+            
+            // Forzar la animación de las tarjetas si ya son visibles al cargar
+            setTimeout(() => {
+                const cards = document.querySelectorAll('.muker-card');
+                cards.forEach((card, index) => {
+                    const rect = card.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    }
+                });
+            }, 200);
+        }
+    </script>
+    <script src="./js/components.js"></script>
+</body>
+</html>

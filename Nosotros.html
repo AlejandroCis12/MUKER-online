@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="PRACTIK-BOX — Diseños personalizados en madera" />
+    <meta name="description" content="Somos especialistas en crear muebles únicos que se adaptan a tus necesidades y espacios. Cada pieza es fabricada con madera de la más alta calidad.
+    " />
+    <meta name="author" content="A Regular Page by EduardoPP & AlejandroSC">
+    <meta name="robots" content="index, follow">
+    <meta name="copyright" content="PRACTIK-BOX" />
+    <title>Nosotros </title>
+        <!-- Icono del sitio -->
+    <link rel="icon" href="Imagenes/Index/icon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="Imagenes/Index/icon.png" type="image/png">
+    <style>
+        /* Hero Section para Nosotros */
+        .hero-nosotros {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Imagenes/Nosotros/hero-nosotros.png');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-nosotros h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+       /* Nuestro Proceso */
+        .proceso-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .proceso-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: 0;
+        }
+        
+        .proceso-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+        
+        .proceso-paso {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .proceso-paso:nth-child(even) {
+            direction: rtl;
+        }
+        
+        .proceso-paso:nth-child(even) .proceso-content {
+            direction: ltr;
+        }
+        
+        .proceso-imagen {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            height: 350px;
+        }
+        
+        .proceso-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .proceso-imagen:hover img {
+            transform: scale(1.05);
+        }
+        
+        .proceso-content {
+            padding: 2rem;
+        }
+        
+        .proceso-numero {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        
+        .proceso-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+        
+        .proceso-content p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        
+        .proceso-detalles {
+            background: var(--color-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-primary);
+        }
+        
+        .proceso-detalles h4 {
+            margin-bottom: 0.5rem;
+            color: var(--color-accent);
+        }
+
+        /* Misión y Visión */
+        .mision-vision {
+            background-color: var(--color-light);
+        }
+        
+        .mv-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .mv-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .mv-card p{
+            text-align: justify;
+            padding: 20px 30px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+
+        }
+        .mv-card:hover {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 150%);
+            color: white;            
+        }
+
+        .mv-card:hover h3, .mv-card:hover .mv-icon{
+            color: var(--color-neutral)
+        } 
+        
+        .mv-icon {
+            font-size: 3.5rem;
+            color: var(--color-icon);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            height: 100px;
+            background: var(--color-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: px;
+        }
+        
+        .mv-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        /* Valores */
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .valor-card {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .valor-card p{
+            text-align: justify;
+        }
+        
+        .valor-card:hover {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 150%);
+            color: white;
+        }
+        
+        .valor-icon {
+            font-size: 3rem;
+            color: var(--color-icon);
+            margin-bottom: 1rem;
+        }
+
+        .valor-card:hover h3, .valor-card:hover .valor-icon{
+            color: var(--color-neutral)
+        } 
+
+        /* ANIMACIONES*/
+        
+        /* Animaciones de entrada */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Animación para hero */
+        .hero-nosotros .hero-content {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Animación escalonada para pasos del proceso */
+        .proceso-paso {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+        
+        .proceso-paso:nth-child(even) {
+            transform: translateX(50px);
+        }
+        
+        .proceso-paso.animated {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Animación para números del proceso */
+        .proceso-numero {
+            transition: all 0.3s ease;
+        }
+        
+        .proceso-paso:hover .proceso-numero {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--color-btn);
+        }
+        
+        /* Animación para tarjetas de misión/visión */
+        .mv-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .mv-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .mv-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        /* Animación para iconos de misión/visión */
+        .mv-icon {
+            transition: all 0.4s ease;
+        }
+        
+        .mv-card:hover .mv-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Animación para valores */
+        .valor-card {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.5s ease;
+        }
+        
+        .valor-card.animated {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .valor-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+        
+        /* Animación para iconos de valores */
+        .valor-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .valor-card:hover .valor-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        /* Animación para títulos de sección */
+        .section-title h2 {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--color-primary);
+            transition: width 0.8s ease;
+        }
+        
+        .section-title.animated h2::after {
+            width: 100%;
+        }
+        /* Responsive */
+        @media (max-width: 968px) {
+            .historia-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .mv-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .proceso-paso {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .proceso-paso:nth-child(even) {
+                direction: ltr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-nosotros h1 {
+                font-size: 2.5rem;
+            }
+            
+            .galeria-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mv-card {
+                padding: 2rem;
+            }
+            
+            /* Ajustes para animaciones en móvil */
+            .map-visual {
+                transform: translateY(30px) scale(0.95);
+            }
+            
+            .contact-info-section {
+                transform: translateY(30px) scale(0.95);
+            }
+        }
+
+        @media (max-width: 400px) {
+        .infraestrucutura, .viviendas, .edificios, .comercial {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 0 auto;
+            justify-items: center;
+           }
+    }
+
+    
+
+    </style>
+</head>
+<body>
+<div id="header-container"></div>
+<!-- Hero Section para Nosotros -->
+<section class="hero-nosotros">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Nuestra historia</h1>
+            <p>Conoce el corazón y el alma detrás de cada pieza que creamos.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Nuestro Proceso -->
+<section class="section proceso-section">
+    <div class="container">
+        <div class="section-title fade-in">
+            <h2>Nuestro proceso artesanal.</h2>
+            <p>Desde la selección de la madera hasta el acabado final, cada paso es realizado con dedicación y maestría.</p>
+        </div>
+        <div class="proceso-container">
+            <div class="proceso-paso">
+                <div class="proceso-imagen">
+                    <img src="Imagenes/Nosotros/Carpintero-nosotros.png" alt="Selección de maderas">
+                </div>
+                <div class="proceso-content">
+                    <div class="proceso-numero">1</div>
+                    <h3>Selección de maderas :</h3>
+                    <p>Seleccionamos cuidadosamente cada tabla de madera, evaluando su color y características únicas. Trabajamos con proveedores sostenibles que comparten nuestro compromiso con el medio ambiente.</p>
+                </div>
+            </div>
+            
+            <div class="proceso-paso">
+                <div class="proceso-imagen">
+                    <img src="Imagenes/Nosotros/Herramientas-nosotros.png" alt="Diseño y planificación">
+                </div>
+                <div class="proceso-content">
+                    <div class="proceso-numero">2</div>
+                    <h3>Diseño y planificación :</h3>
+                    <p>Cada proyecto comienza con un diseño detallado en el que se considere tanto la estética como la funcionalidad. Colaboramos estrechamente con nuestros clientes para asegurar que cada pieza se adapte perfectamente a sus necesidades y espacios.</p>
+                </div>
+            </div>
+            
+            <div class="proceso-paso">
+                <div class="proceso-imagen">
+                    <img src="Imagenes/Nosotros/taller-nosotros.jpg" alt="Fabricación artesanal">
+                </div>
+                <div class="proceso-content">
+                    <div class="proceso-numero">3</div>
+                    <h3>Fabricación artesanal :</h3>
+                    <p>Nuestros maestros artesanos utilizan una combinación de herramientas tradicionales y tecnología moderna para dar forma a la madera. Cada corte, cada unión, es realizado con precisión y atención al detalle.</p>
+                </div>
+            </div>
+            
+            <div class="proceso-paso">
+                <div class="proceso-imagen">
+                    <img src="Imagenes/Nosotros/Acabado-nosotros.jpg" alt="Acabado y pulido">
+                </div>
+                <div class="proceso-content">
+                    <div class="proceso-numero">4</div>
+                    <h3>Terminado :</h3>
+                    <p>Aplicamos acabados que realzan la belleza inherente de la madera y la protegen. Utilizamos técnicas de lijado para lograr un resultado impecable.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+   <!-- Misión y Visión -->
+    <section class="section mision-vision">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Nuestra misión y visión.</h2>
+            </div>
+            <div class="mv-container">
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Misión</h3>
+                    <p>Crear muebles y accesorios de madera que combinen la belleza artesanal con la funcionalidad moderna, superando las expectativas de nuestros clientes mediante un servicio personalizado y un compromiso inquebrantable con la calidad.</p>
+                </div>
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Visión</h3>
+                    <p>Ser reconocidos como el referente en la fabricacióna de muebles y accesorios de madera a nivel nacional, manteniendo viva la tradición carpintera mientras innovamos en diseño y técnicas, creando piezas que se conviertan en herencias familiares y contribuyan a espacios más cálidos y auténticos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Nuestros Valores -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Nuestros valores fundamentales.</h2>
+                <p>Principios que guían cada aspecto de nuestro trabajo.</p>
+            </div>
+            <div class="valores-grid">
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sostenibilidad</h3>
+                    <p>Trabajamos con maderas de fuentes responsables y utilizamos procesos que minimizan nuestro impacto ambiental.</p>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Calidad</h3>
+                    <p>No aceptamos atajos. Cada pieza es creada con los más altos estándares de calidad y durabilidad.</p>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Pasión</h3>
+                    <p>Amamos lo que hacemos, y esto se refleja en el cuidado y dedicación que ponemos en cada proyecto y en la atención al cliente.</p>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Compromiso</h3>
+                    <p>Siempre comprometidos desde el primer contacto hasta la satisfacción en la entrega final.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Sección: En Dónde Estamos -->
+    <section class="contact-section" id="contacto">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-content">
+                    <div class="map-section">
+                        <div class="map-visual">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3748.102762546342!2d-98.72903212661991!3d20.04613797964586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842eeef8364d9bcf%3A0xd7ba69856107117d!2sHidrosistemas!5e0!3m2!1sen!2smx!4v1760387857696!5m2!1sen!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="contact-info-section">
+                        <h3>Contáctanos</h3>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Dirección</h4>
+                                    <p>Circuito Emprendedores No. 19, Parque Industrial Metropolitano, Mineral de la Reforma, Hgo. CP 42186</p>
+                                </div>
+                            </div>
+                            <div class="contact-container">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-text">
+                                <h4>Teléfonos</h4>
+                                <p>
+                                    <a href="tel:+527717132513">771 713 2513</a><br>
+                                    <a href="tel:+527717132514">771 713 2514</a><br>
+                                    <a href="tel:+527717181044">771 718 1044</a>
+                                </p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item whatsapp-item">
+                                <div class="contact-icon contact-whatsapp-icon">
+                                <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="contact-whatsapp">
+                                <h4>WhatsApp</h4>
+                                <p>
+                                    <a href="https://wa.me/52771712167150" target="_blank">771 712 167 150</a>
+                                </p>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Email</h4>
+                                    <p><a href="mailto:ventas@hidrosistemas.com.mx">ventas@hidrosistemas.com.mx</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Horario</h4>
+                                    <p>Lun-Vie: 9:00 AM - 6:00 PM</p>
+                                    <p>Sábado: 9:00 AM - 1:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button class="btn-scroll-top" aria-label="Volver arriba">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+        </svg>
+    </button>
+
+    
+<div id="footer-container"></div>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"
+    ></script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"
+    ></script>
+
+    <script>
+            // Animación de elementos al hacer scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const procesoPasos = document.querySelectorAll('.proceso-paso');
+            const mvCards = document.querySelectorAll('.mv-card');
+            const valorCards = document.querySelectorAll('.valor-card');
+            const sectionTitles = document.querySelectorAll('.section-title');
+            const mapVisual = document.querySelector('.map-visual');
+            const contactInfo = document.querySelector('.contact-info-section');
+            const contactItems = document.querySelectorAll('.contact-item');
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Animación escalonada para los pasos del proceso
+                        if (entry.target.classList.contains('proceso-container')) {
+                            procesoPasos.forEach((paso, index) => {
+                                setTimeout(() => {
+                                    paso.classList.add('animated');
+                                }, index * 300);
+                            });
+                        }
+                        
+                        // Animación para misión y visión
+                        if (entry.target.classList.contains('mv-container')) {
+                            mvCards.forEach((card, index) => {
+                                setTimeout(() => {
+                                    card.classList.add('animated');
+                                }, index * 200);
+                            });
+                        }
+                        
+                        // Animación para valores
+                        if (entry.target.classList.contains('valores-grid')) {
+                            valorCards.forEach((card, index) => {
+                                setTimeout(() => {
+                                    card.classList.add('animated');
+                                }, index * 150);
+                            });
+                        }
+                        
+                        // Animación para títulos de sección
+                        if (entry.target.classList.contains('section-title')) {
+                            entry.target.classList.add('animated');
+                        }
+                        
+                        // Animación para mapa y contacto
+                        if (entry.target.classList.contains('contact-content')) {
+                            setTimeout(() => {
+                                if (mapVisual) mapVisual.classList.add('animated');
+                            }, 300);
+
+                            setTimeout(() => {
+                                if (contactInfo) contactInfo.classList.add('animated');
+                            }, 600);
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // Observar elementos para animaciones
+            fadeElements.forEach(el => observer.observe(el));
+            document.querySelector('.proceso-container') && observer.observe(document.querySelector('.proceso-container'));
+            document.querySelector('.mv-container') && observer.observe(document.querySelector('.mv-container'));
+            document.querySelector('.valores-grid') && observer.observe(document.querySelector('.valores-grid'));
+            sectionTitles.forEach(title => observer.observe(title));
+            document.querySelector('.contact-content') && observer.observe(document.querySelector('.contact-content'));
+            
+            // Activar animaciones para elementos ya visibles al cargar
+            setTimeout(() => {
+                fadeElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 100);
+    </script>
+    <script src="./js/components.js"></script>
+</body>
+</html>

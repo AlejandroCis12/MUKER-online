@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRACTIK-BOX</title>
+    <title>MUKER</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -12,93 +12,605 @@
     />
 
     <!-- Primary Meta Tags -->
-    <meta name="title" content="PRACTIK-BOX — Diseños personalizados en madera" />
+    <meta name="title" content="MUKER" />
     <meta name="description" content="Somos especialistas en crear muebles únicos que se adaptan a tus necesidades y espacios. Cada pieza es fabricada con madera de la más alta calidad.
     " />
     <meta name="author" content="Alejandro" />
-    <meta name="copyright" content="PRACTIK-BOX" />
+    <meta name="copyright" content="MUKER" />
     <!-- Icono del sitio -->
     <link rel="icon" href="Imagenes/Index/icon.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-        <style>
-            /* ANIMACIONES */
-            
-            /* Animación de entrada para elementos */
-            .fade-in {
-                opacity: 0;
-                transform: translateY(30px);
-                transition: opacity 0.6s ease, transform 0.6s ease;
-            }
-            
-            .fade-in.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            
-            /* Animación para tarjetas al hacer hover */
-            .category-card, .step {
-                transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            }
-            
-            .category-card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            }
+<style>
+    /* ANIMACIONES - Con colores actualizados */
+    /* ===== SLIDER DE PRESENTACIÓN MUKER ===== */
+.muker-slider-section {
+    width: 100%;
+    height: 90vh;
+    position: relative;
+    overflow: hidden;
+    margin: 2rem 0;
+}
+
+.slider-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slider-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.slider-slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide-background {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(44, 44, 44, 0.8) 0%, 
+        rgba(181, 92, 58, 0.6) 100%);
+    z-index: 1;
+}
+
+.slide-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+    animation: slideContentIn 1s ease forwards;
+}
+
+@keyframes slideContentIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.slide-title {
+    font-size: 4rem;
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-weight: 700;
+}
+
+.slide-description {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.95;
+    line-height: 1.8;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Stats para slide Nosotros */
+.slide-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 35px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    line-height: 1;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Grid de productos para slide Líneas */
+.product-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 35px;
+}
+
+.product-mini {
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding: 15px 25px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.product-mini:hover {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    transform: translateY(-5px);
+}
+
+.product-mini i {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.product-mini span {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Features para slide Proyectos */
+.project-features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.project-features span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(5px);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.project-features i {
+    color: var(--color-secondary);
+}
+
+/* Galería de proyectos */
+.project-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.project-gallery img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+}
+
+.project-gallery img:hover {
+    transform: scale(1.1);
+    border-color: var(--color-secondary);
+}
+
+.project-gallery span {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(5px);
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+/* Botón principal */
+.slide-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #9e4f32 100%);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.slide-button i {
+    transition: transform 0.3s ease;
+}
+
+.slide-button:hover {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    border-color: rgba(255,255,255,0.3);
+}
+
+.slide-button:hover i {
+    transform: translateX(8px);
+}
+
+/* Flechas de navegación */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.slider-arrow:hover {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-color: transparent;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 25px rgba(181, 92, 58, 0.4);
+}
+
+.slider-arrow.prev {
+    left: 30px;
+}
+
+.slider-arrow.next {
+    right: 30px;
+}
+
+/* Dots indicadores */
+.slider-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.dot.active {
+    background: white;
+    transform: scale(1.3);
+    width: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.5);
+    border-color: var(--color-primary);
+}
+
+.dot:hover {
+    background: white;
+    transform: scale(1.1);
+}
+
+/* Barra de progreso */
+.slider-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.2);
+    z-index: 10;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    transition: width 0.3s linear;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .muker-slider-section {
+        height: 80vh;
+    }
     
-            /* Animación para iconos */
-            .step-icon, .contact-icon, .social-icons a {
-                transition: all 0.3s ease;
-            }
-            
-            .step:hover .step-icon {
-                transform: scale(1.1) rotate(5deg);
-            }
-             
-            /* Animación de carga para imágenes */
-            .intro-image img, .category-img {
-                transition: transform 0.5s ease, opacity 0.5s ease;
-            }
-            
-            .intro-image:hover img {
-                transform: scale(1.03);
-            }
+    .slide-title {
+        font-size: 3rem;
+    }
     
-            /* Animación para elementos del proceso */
-            .process-steps .step {
-                opacity: 0;
-                transform: translateY(20px);
-                transition: all 0.2s ease;
-            }
-            
-            .process-steps .step.animated {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            
-            /* Retrasos escalonados para animaciones */
-            .step:nth-child(1) { transition-delay: 0.1s; }
-            .step:nth-child(2) { transition-delay: 0.2s; }
-            .step:nth-child(3) { transition-delay: 0.3s; }
-            .step:nth-child(4) { transition-delay: 0.4s; }
-        </style>
+    .slide-description {
+        font-size: 1.1rem;
+    }
+    
+    .slider-arrow {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .muker-slider-section {
+        height: 100vh;
+    }
+    
+    .slide-title {
+        font-size: 2.2rem;
+    }
+    
+    .slide-description {
+        font-size: 1rem;
+    }
+    
+    .slide-stats {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .product-grid {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .product-mini {
+        padding: 12px 20px;
+    }
+    
+    .project-features {
+        flex-wrap: wrap;
+    }
+    
+    .slider-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .slider-arrow.prev {
+        left: 15px;
+    }
+    
+    .slider-arrow.next {
+        right: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .slide-tag {
+        font-size: 0.8rem;
+        padding: 8px 20px;
+    }
+    
+    .slide-title {
+        font-size: 1.8rem;
+    }
+    
+    .slide-button {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    
+    .project-gallery img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .slider-dots {
+        bottom: 20px;
+    }
+}
+    /* Animación de entrada para elementos */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Animación para tarjetas al hacer hover */
+    .category-card, .step {
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    .category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(181, 92, 58, 0.15); /* Sombra terracota */
+    }
+
+    /* Animación para iconos */
+    .step-icon, .contact-icon, .social-icons a {
+        transition: all 0.3s ease;
+    }
+    
+    .step:hover .step-icon {
+        transform: scale(1.1) rotate(5deg);
+    }
+     
+    /* Animación de carga para imágenes */
+    .intro-image img, .category-img {
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+    
+    .intro-image:hover img {
+        transform: scale(1.03);
+    }
+
+    /* Animación para elementos del proceso */
+    .process-steps .step {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.2s ease;
+    }
+    
+    .process-steps .step.animated {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Retrasos escalonados para animaciones */
+    .step:nth-child(1) { transition-delay: 0.1s; }
+    .step:nth-child(2) { transition-delay: 0.2s; }
+    .step:nth-child(3) { transition-delay: 0.3s; }
+    .step:nth-child(4) { transition-delay: 0.4s; }
+    
+    /* Animación para el header al hacer scroll (opcional) */
+    header {
+        transition: all 0.3s ease;
+    }
+    
+    header.scrolled {
+        box-shadow: 0 4px 20px rgba(181, 92, 58, 0.2);
+    }
+</style>
 </head>
 <body>
 <div id="header-container"></div>
     <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="fade-in">Diseños personalizados en madera</h1>
-                <p class="fade-in">Fabricación de closets, vestidores y cocinas.</p>
-                <div class="fade-in">
-                    <a href="Productos.html" class="btn">Ver Productos</a>
-                    <a href="proceso.html" class="btn btn-secondary">Solicitar Cotización</a>
+<!-- Slider de Presentación MUKER -->
+<!-- Slider de Presentación MUKER -->
+<section class="muker-slider-section">
+    <div class="slider-container">
+        <div class="slider-track">
+            <!-- SLIDE 1: Nosotros -->
+            <div class="slider-slide">
+                <div class="slide-background" style="background-image: url('Imagenes/Index/Introduction-image.jpg');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="slide-tag">Nuestras líneas</span>
+                        <h2 class="slide-title">Diseños personalizados en madera</h2>
+                        <a href="Productos.html" class="slide-button">
+                            Explorar Lineas <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- SLIDE 2: Líneas de Productos -->
+            <div class="slider-slide">
+                <div class="slide-background" style="background-image: url('Imagenes/Nosotros/hero-nosotros.png');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="slide-tag">Nosotros</span>
+                        <h2 class="slide-title">Nuestra Historia</h2>
+                        <p class="slide-description">
+                            Conoce el corazón y el alma detrás de cada pieza que creamos.
+                        </p>
+                        <a href="Nosotros.html" class="slide-button">
+                            Conocer nuestra historia <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: Proyectos Destacados -->
+            <div class="slider-slide">
+                <div class="slide-background" style="background-image: url('Imagenes/Proyectos/hero-proyectos.png');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="slide-tag">Proyecto destacado</span>
+                        <h2 class="slide-title">Nuestros proyectos destacados</h2>
+                        <p class="slide-description">
+                            Descubre cómo transformamos espacios con muebles personalizados de alta calidad.
+                        </p>
+                        <a href="Proyectos.html" class="slide-button">
+                            Ver todos los proyectos <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- Controles del slider -->
+        <button class="slider-arrow prev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="slider-arrow next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Indicadores -->
+        <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <!-- Progreso del slider -->
+        <div class="slider-progress">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+</section>
 
     <!-- Sección Introducción -->
     <section class="section intro-section" id="nosotros">
@@ -171,11 +683,6 @@
                     <div class="step-icon"><i class="fa-solid fa-pencil"></i></div>
                     <h3>Diseñar</h3>
                     <p>Creamos un diseño personalizado que se adapte a tu estilo y necesidades.</p>
-                </div>
-                    <div class="step">
-                    <div class="step-icon"><i class="fa-solid fa-ruler"></i></div>
-                    <h3>Medición</h3>
-                    <p>Tomamos las medidas exactas de tu espacio para garantizar un ajuste perfecto.</p>
                 </div>
                 <div class="step">
                     <div class="step-icon"><i class="fa-solid fa-hammer"></i></div>
@@ -351,7 +858,6 @@
                 });
             }, 100);
         </script>
-    <script src="./js/app.js"></script>
     <script src="./js/components.js"></script>
 </body>
 </html>
