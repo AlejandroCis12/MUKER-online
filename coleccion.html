@@ -1,0 +1,500 @@
+<!-- coleccion.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lineas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="Imagenes/Index/icon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .h1{
+            font-family: 'Playfair Display', serif;
+            color: white;
+        }
+        /* Tus estilos aquí... */
+        .hero-coleccion {
+            height: 70vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .badge-coleccion {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+        
+        .especificaciones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .espec-item {
+            text-align: center;
+            padding: 30px;
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+        
+        .btn-volver {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* Estilos para el Lightbox - MODIFICADO */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 70%;  /* Cambiado de 90% a 70% */
+            max-height: 80%;  /* Cambiado de 90% a 80% */
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 5px;
+            max-height: 80vh;  /* Altura máxima relativa al viewport */
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -15px;
+            right: 6px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+
+        .lightbox-close:hover {
+            color: #ff0000;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            padding: 20px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .lightbox-nav.prev {
+            left: 20px;
+        }
+
+        .lightbox-nav.next {
+            right: 20px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 16px;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        /* Estilo para las imágenes de la galería */
+        .galeria-item {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .galeria-item:hover {
+            transform: scale(1.02);
+        }
+
+        /* Media queries para responsive */
+        @media (max-width: 768px) {
+            .lightbox-content {
+                max-width: 85%;
+                max-height: 70%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .lightbox-content {
+                max-width: 90%;
+                max-height: 60%;
+            }
+            
+            .lightbox-nav {
+                font-size: 30px;
+                padding: 15px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-container"></div>
+    
+    <a href="Productos.html" class="btn-volver"><i class="fas fa-arrow-left"></i> Volver a colecciones</a>
+    
+    <!-- Contenido dinámico que se llenará con JavaScript -->
+    <div id="contenido-coleccion"></div>
+
+    <!-- Lightbox - MODIFICADO -->
+    <div id="lightbox" class="lightbox" onclick="cerrarLightbox(event)">
+        <span class="lightbox-close" onclick="cerrarLightbox(event)">&times;</span>
+        <span class="lightbox-nav prev" onclick="cambiarImagen(-1, event)">&#10094;</span>
+        <span class="lightbox-nav next" onclick="cambiarImagen(1, event)">&#10095;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Imagen ampliada">
+        </div>
+        <div class="lightbox-counter" id="lightbox-counter"></div>
+    </div>
+    
+    <div id="footer-container"></div>
+
+    <script>
+        // Variables globales para el lightbox
+        let imagenesActuales = [];
+        let imagenActualIndex = 0;
+
+        // Base de datos de colecciones
+        const coleccionesDB = {
+            zabor: {
+                nombre: 'ZABOR',
+                titulo: 'Cocinas a medida',
+                descripcion: 'Diseños que transforman el corazón de tu hogar',
+                heroImage: './Imagenes/Productos/Lineas/hero-zabor.png',
+                color: '#2d4637',
+                icono: 'fa-kitchen-set',
+                eslogan: 'El arte de cocinar, el placer de compartir',
+                especificaciones: [
+                    { icono: 'fa-tree', titulo: 'Madera', descripcion: 'Pino canadiense' },
+                    { icono: 'fa-ruler', titulo: 'Medidas', descripcion: 'Personalizables' },
+                    { icono: 'fa-paint-brush', titulo: 'Acabados', descripcion: '10 opciones' },
+                    { icono: 'fa-shield', titulo: 'Garantía', descripcion: '5 años' }
+                ],
+                caracteristicas: [
+                    'Gabinetes con cierre suave',
+                    'Cubiertas de cuarzo o granito',
+                    'Organizadores internos',
+                    'Iluminación LED integrada'
+                ],
+                imagenes: [
+                    './Imagenes/Productos/Muebles de cocina.jpg',
+                    './Imagenes/Productos/Muebles de cocina1.jpg',
+                    './Imagenes/Productos/Muebles de cocina2.jpg'
+                ],
+                precio: 'Desde $15,000 MXN'
+            },
+            ritual: {
+                nombre: 'RITUAL',
+                titulo: 'Clósets y vestidores',
+                descripcion: 'Organiza tu vida con estilo',
+                heroImage: './Imagenes/Productos/Lineas/Ritual-hero.png',
+                color: '#8c6e50',
+                icono: 'fa-wardrobe',
+                eslogan: 'Tu espacio, tu ritual diario',
+                especificaciones: [
+                    { icono: 'fa-tree', titulo: 'Madera', descripcion: 'Caoba' },
+                    { icono: 'fa-ruler', titulo: 'Medidas', descripcion: 'A la medida' },
+                    { icono: 'fa-paint-brush', titulo: 'Acabados', descripcion: '8 opciones' },
+                    { icono: 'fa-shield', titulo: 'Garantía', descripcion: '5 años' }
+                ],
+                caracteristicas: [
+                    'Sistemas modulares',
+                    'Iluminación automática',
+                    'Espejos integrados',
+                    'Organizadores inteligentes'
+                ],
+                imagenes: [
+                    './Imagenes/Productos/Closets y Vestidores.jpg',
+                    './Imagenes/Productos/Closets y Vestidores1.jpg',
+                    './Imagenes/Productos/Closets y Vestidores2.jpg'
+                ],
+                precio: 'Desde $12,000 MXN'
+            },
+            mareto: {
+                nombre: 'MARETO',
+                titulo: 'Recámaras infantiles',
+                descripcion: 'Espacios mágicos para crecer',
+                heroImage: './Imagenes/Productos/Lineas/Mareto-hero.png',
+                color: '#a5b99b',
+                icono: 'fa-child',
+                eslogan: 'Donde los sueños cobran vida',
+                especificaciones: [
+                    { icono: 'fa-tree', titulo: 'Madera', descripcion: 'Pino sin astillas' },
+                    { icono: 'fa-ruler', titulo: 'Medidas', descripcion: 'Adaptable' },
+                    { icono: 'fa-paint-brush', titulo: 'Acabados', descripcion: 'No tóxicos' },
+                    { icono: 'fa-shield', titulo: 'Garantía', descripcion: '5 años' }
+                ],
+                caracteristicas: [
+                    'Diseños temáticos',
+                    'Literas integradas',
+                    'Áreas de juego',
+                    'Esquinas redondeadas'
+                ],
+                imagenes: [
+                    './Imagenes/Productos/Lineas/Mareto-1.png',
+                    './Imagenes/Productos/Lineas/Mareto-2.png'
+                ],
+                precio: 'Desde $18,000 MXN'
+            },
+            focus: {
+                nombre: 'FOCUS',
+                titulo: 'Mobiliario oficina',
+                descripcion: 'Productividad con estilo',
+                heroImage: './Imagenes/Productos/Lineas/Focus-hero.png',
+                color: '#1e3755',
+                icono: 'fa-briefcase',
+                eslogan: 'Enfócate en lo que importa',
+                especificaciones: [
+                    { icono: 'fa-tree', titulo: 'Madera', descripcion: 'Roble alemán' },
+                    { icono: 'fa-ruler', titulo: 'Medidas', descripcion: 'Ergonómicas' },
+                    { icono: 'fa-paint-brush', titulo: 'Acabados', descripcion: '6 opciones' },
+                    { icono: 'fa-shield', titulo: 'Garantía', descripcion: '5 años' }
+                ],
+                caracteristicas: [
+                    'Escritorios ajustables',
+                    'Estanterías modulares',
+                    'Gestión de cables',
+                    'Home office completo'
+                ],
+                imagenes: [
+                    './Imagenes/Productos/oficina1.png',
+                    './Imagenes/Productos/oficina2.png'
+                ],
+                precio: 'Desde $10,000 MXN'
+            },
+            calma: {
+                nombre: 'CALMA',
+                titulo: 'Baños a medida',
+                descripcion: 'Tu spa personal',
+                heroImage: './Imagenes/Productos/Lineas/Calma-hero.png',
+                color: '#828282',
+                icono: 'fa-bath',
+                eslogan: 'Relájate en tu propio oasis',
+                especificaciones: [
+                    { icono: 'fa-tree', titulo: 'Madera', descripcion: 'Teca resistente' },
+                    { icono: 'fa-ruler', titulo: 'Medidas', descripcion: 'A medida' },
+                    { icono: 'fa-paint-brush', titulo: 'Acabados', descripcion: 'Hidrófugos' },
+                    { icono: 'fa-shield', titulo: 'Garantía', descripcion: '5 años' }
+                ],
+                caracteristicas: [
+                    'Muebles flotantes',
+                    'Espejos con iluminación',
+                    'Organizadores verticales',
+                    'Materiales resistentes'
+                ],
+                imagenes: [
+                    './Imagenes/Productos/Mueble de baño.jpg',
+                    './Imagenes/Productos/mueble de baño1.jpg',
+                    './Imagenes/Productos/mueble de baño2.png'
+                ],
+                precio: 'Desde $8,000 MXN'
+            },
+            rincon: {
+                nombre: 'RINCÓN',
+                titulo: 'Accesorios',
+                descripcion: 'Detalles que marcan la diferencia',
+                heroImage: './Imagenes/Productos/Lineas/Rincon-hero.png',
+                color: '#9b5537',
+                icono: 'fa-couch',
+                eslogan: 'Los pequeños detalles, grandes diferencias',
+                especificaciones: [
+                    { icono: 'fa-tree', titulo: 'Madera', descripcion: 'Variedad' },
+                    { icono: 'fa-ruler', titulo: 'Medidas', descripcion: 'Personalizado' },
+                    { icono: 'fa-paint-brush', titulo: 'Acabados', descripcion: 'Múltiples' },
+                    { icono: 'fa-shield', titulo: 'Garantía', descripcion: '2 años' }
+                ],
+                caracteristicas: [
+                    'Repisas decorativas',
+                    'Percheros',
+                    'Portamacetas',
+                    'Organizadores'
+                ],
+                imagenes: [
+                    './Imagenes/Productos/accesorios/banquitos.png',
+                    './Imagenes/Productos/accesorios/bote.jpg',
+                    './Imagenes/Productos/accesorios/cajate.jpg',
+                    './Imagenes/Productos/accesorios/lazy susan.png',
+                    './Imagenes/Productos/accesorios/macetas.jpg',
+                    './Imagenes/Productos/accesorios/percheros.jpg',
+                    './Imagenes/Productos/accesorios/porta huevo.jpg',
+                    './Imagenes/Productos/accesorios/Tablas para queso.png'
+                ],
+                precio: 'Desde $500 MXN'
+            }
+        };
+
+        // Funciones del Lightbox - MODIFICADO
+        function abrirLightbox(index, imagenes) {
+            imagenesActuales = imagenes;
+            imagenActualIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const counter = document.getElementById('lightbox-counter');
+            
+            lightboxImg.src = imagenes[index];
+            
+            // Agregar un pequeño retraso para que la imagen se cargue antes de mostrar el contador
+            setTimeout(() => {
+                counter.textContent = `${index + 1} de ${imagenes.length}`;
+            }, 100);
+            
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function cerrarLightbox(event) {
+            event.stopPropagation();
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function cambiarImagen(direccion, event) {
+            event.stopPropagation();
+            imagenActualIndex += direccion;
+            
+            if (imagenActualIndex < 0) {
+                imagenActualIndex = imagenesActuales.length - 1;
+            } else if (imagenActualIndex >= imagenesActuales.length) {
+                imagenActualIndex = 0;
+            }
+            
+            const lightboxImg = document.getElementById('lightbox-img');
+            const counter = document.getElementById('lightbox-counter');
+            
+            lightboxImg.src = imagenesActuales[imagenActualIndex];
+            counter.textContent = `${imagenActualIndex + 1} de ${imagenesActuales.length}`;
+        }
+
+        // Teclas del teclado para navegación
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightbox');
+            if (!lightbox.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') {
+                cerrarLightbox(e);
+            } else if (e.key === 'ArrowLeft') {
+                cambiarImagen(-1, e);
+            } else if (e.key === 'ArrowRight') {
+                cambiarImagen(1, e);
+            }
+        });
+
+        // Obtener el parámetro de la URL
+        function obtenerColeccion() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id') || 'zabor';
+        }
+
+        // Generar HTML dinámico
+        function generarHTML(coleccion) {
+            return `
+                <!-- Hero -->
+                <section class="hero-coleccion" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${coleccion.heroImage}'); background-size: cover; background-position: center;">
+                    <div class="badge-coleccion" style="background: ${coleccion.color}; color: white;">
+                        <i class="fas ${coleccion.icono}"></i> Colección ${coleccion.nombre}
+                    </div>
+                    <div style="text-align: center; color: white; max-width: 800px; padding: 20px;">
+                        <h1 style="font-size: 4rem; margin-bottom: 10px; color: white;">${coleccion.nombre}</h1>
+                        <h2 style="font-size: 2rem; margin-bottom: 20px; color: white;">${coleccion.titulo}</h2>
+                        <p style="font-size: 1.3rem; font-style: italic; margin-bottom: 30px;">"${coleccion.eslogan}"</p>
+                        <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto;">${coleccion.descripcion}</p>
+                    </div>
+                </section>
+
+                <!-- Galería -->
+                <section style="padding: 60px 0;">
+                    <h2 style="text-align: center; font-size: 2.5rem; color: ${coleccion.color}; margin-bottom: 40px;">Galería</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                        ${coleccion.imagenes.map((img, index) => `
+                            <div class="galeria-item" style="border-radius: 10px; overflow: hidden; height: 250px; cursor: pointer;" onclick="abrirLightbox(${index}, ${JSON.stringify(coleccion.imagenes).replace(/"/g, '&quot;')})">
+                                <img src="${img}" alt="${coleccion.nombre}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+
+                <!-- Características -->
+                <section style="padding: 60px 0; background: #f9f9f9;">
+                    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                        <h2 style="text-align: center; font-size: 2.5rem; color: ${coleccion.color}; margin-bottom: 40px;">Características</h2>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                            ${coleccion.caracteristicas.map(car => `
+                                <div style="display: flex; align-items: center; gap: 10px; background: white; padding: 20px; border-radius: 10px;">
+                                    <i class="fas fa-check-circle" style="color: ${coleccion.color}; font-size: 1.5rem;"></i>
+                                    <span>${car}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // Cargar la colección
+        document.addEventListener('DOMContentLoaded', function() {
+            const id = obtenerColeccion();
+            const coleccion = coleccionesDB[id];
+            
+            if (coleccion) {
+                document.getElementById('contenido-coleccion').innerHTML = generarHTML(coleccion);
+                document.title = `${coleccion.nombre} - ${coleccion.titulo}`;
+            } else {
+                document.getElementById('contenido-coleccion').innerHTML = '<h2>Colección no encontrada</h2>';
+            }
+        });
+    </script>
+    <script src="./js/components.js"></script>
+</body>
+</html>

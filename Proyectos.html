@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="PRACTIK-BOX — Diseños personalizados en madera" />
+    <meta name="description" content="Somos especialistas en crear muebles únicos que se adaptan a tus necesidades y espacios. Cada pieza es fabricada con madera de la más alta calidad.
+    " />
+    <meta name="author" content="A Regular Page by EduardoPP & AlejandroSC">
+    <meta name="robots" content="index, follow">
+    <meta name="copyright" content="PRACTIK-BOX" />
+    <title>Proyectos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="Imagenes/Index/icon.png" type="image/png">
+    <style>
+        /* Hero Section para Proyectos */
+        .hero-proyectos {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Imagenes/Proyectos/hero-proyectos.png');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-proyectos h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Secciones generales */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--color-primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Filtros de proyectos */
+        .filtros-proyectos {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .filtro-btn {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            border: 2px solid var(--color-btn);
+            border-radius: 30px;
+            color: var(--color-btn);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filtro-btn.active, .filtro-btn:hover {
+            background: var(--color-btn);
+            color: white;
+        }
+        
+        /* Grid de proyectos */
+        .proyectos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .proyecto-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .proyecto-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .proyecto-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .proyecto-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .proyecto-card:hover .proyecto-img img {
+            transform: scale(1.1);
+        }
+        
+        .proyecto-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--color-btn);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .proyecto-content {
+            padding: 1.5rem;
+        }
+        
+        .proyecto-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .proyecto-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--color-accent);
+        }
+        
+        .proyecto-desc {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .proyecto-detalles {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .proyecto-desc{
+            text-align: justify;
+        }
+
+        .detalle-item {
+            text-align: center;
+        }
+        
+        .detalle-item i {
+            font-size: 1.5rem;
+            color: var(--color-icon);
+            margin-bottom: 0.5rem;
+        }
+    
+        /* Llamada a la acción */
+        .cta-proyectos {
+            background: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+
+        .cta-proyectos p{
+            padding-bottom: 20px;
+        }
+                 
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* ANIMACIONES */
+        
+        /* Animaciones de entrada */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Animación para hero */
+        .hero-proyectos .hero-content {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Animación para títulos de sección */
+        .section-title h2 {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--color-primary);
+            transition: width 0.8s ease;
+        }
+        
+        .section-title.animated h2::after {
+            width: 100%;
+        }
+        
+        /* Animación para botones de filtro */
+        .filtro-btn {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .filtro-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .filtro-btn:hover::before {
+            left: 100%;
+        }
+        
+        .filtro-btn.active {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Animación para tarjetas de proyectos */
+        .proyecto-card {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .proyecto-card.animated {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        .proyecto-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        /* Animación para badges de proyectos */
+        .proyecto-badge {
+            transition: all 0.3s ease;
+        }
+        
+        .proyecto-card:hover .proyecto-badge {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--color-primary);
+        }
+        
+        /* Animación para iconos de detalles */
+        .detalle-item i {
+            transition: all 0.3s ease;
+        }
+        
+        .proyecto-card:hover .detalle-item i {
+            transform: scale(1.2);
+            color: var(--color-primary);
+        }
+        
+        /* Animación para imágenes de proyectos */
+        .proyecto-img {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .proyecto-img::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.4),
+                transparent
+            );
+            transition: left 0.8s ease;
+            z-index: 1;
+        }
+        
+        .proyecto-card:hover .proyecto-img::before {
+            left: 100%;
+        }
+        
+        /* Animación para CTA */
+        .cta-proyectos {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s ease;
+        }
+        
+        .cta-proyectos.animated {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .cta-proyectos:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        /* Animación de filtrado de proyectos */
+        .proyecto-card {
+            transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+        
+        .proyecto-card.filtered-out {
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            pointer-events: none;
+        }
+        
+        .proyecto-card.filtered-in {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        @media (max-width: 400px){
+            .proyecto-card{
+                margin-right: 30px;
+            }
+        }
+
+        @media (max-width: 330px){
+            .hero-proyectos h1 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .proyecto-card {
+                width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+     <div id="header-container"></div>
+    <!-- Hero Section para Proyectos -->
+    <section class="hero-proyectos">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Nuestros proyectos destacados</h1>
+                <p>Descubre cómo transformamos espacios con muebles personalizados de alta calidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos Residenciales y Comerciales -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Portafolio de proyectos.</h2>
+                <p>Una selección de nuestros trabajos más representativos.</p>
+            </div>
+            
+            <!-- Filtros de proyectos -->
+            <div class="filtros-proyectos">
+                <button class="filtro-btn active" data-categoria="todos">Todos los proyectos</button>
+                <button class="filtro-btn" data-categoria="residencial">Residencial</button>
+                <button class="filtro-btn" data-categoria="comercial">Comercial</button>
+                <button class="filtro-btn" data-categoria="accesorios">Accesorios</button>
+            </div>
+            
+            <!-- Grid de proyectos -->
+            <div class="proyectos-grid">
+                <!-- Proyecto 1 - Residencial -->
+                <div class="proyecto-card" data-categoria="residencial">
+                    <div class="proyecto-img">
+                        <img src="Imagenes/Proyectos/Proyecto 1.jpg" alt="Cocina">
+                        <span class="proyecto-badge">Residencial</span>
+                    </div>
+                    <div class="proyecto-content">
+                        <h3>Cocina Moderna con acabados en Madera Clara</h3>
+                        <p class="proyecto-desc">Cocina moderna y funcional con gabinetes empotrados en acabado de madera clara, que aportan calidez y elegancia al espacio. Ideal para quienes buscan practicidad sin sacrificar estilo.</p>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 2 - Comercial -->
+                <div class="proyecto-card" data-categoria="residencial">
+                    <div class="proyecto-img">
+                        <img src="Imagenes/Proyectos/Proyecto 2.jpg" alt="Closet">
+                        <span class="proyecto-badge">Residencial</span>
+                    </div>
+                    <div class="proyecto-content">
+                        <h3>Closet Empotrado Moderno con acabados en Blanco y Negro</h3>
+                        <p class="proyecto-desc">Espacio de almacenamiento optimizado con sistema modular que combina estantes abiertos, barras colgantes y compartimentos profundos para ropa y accesorios. Ideal para organizar prendas, calzado y objetos personales con estilo y funcionalidad.</p>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 3 - comercial -->
+                <div class="proyecto-card" data-categoria="comercial">
+                    <div class="proyecto-img">
+                        <img src="Imagenes/Proyectos/Proyecto 4.png" alt="Salón de belleza">
+                        <span class="proyecto-badge">Comercial</span>
+                    </div>
+                    <div class="proyecto-content">
+                        <h3>Salón de Belleza con Diseño Premium</h3>
+                        <p class="proyecto-desc">Espacio pensado para la elegancia y la comodidad, ideal para que los clientes se sientan cómodos desde el primer momento. Ideal para salones de belleza que buscan ofrecer no solo servicios de calidad, sino también una experiencia visual y sensorial inolvidable.</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 4 - Accesorios -->
+                <div class="proyecto-card" data-categoria="accesorios">
+                    <div class="proyecto-img">
+                        <img src="Imagenes/Proyectos/Proyecto 3.jpg" alt="Tablas de queso">
+                        <span class="proyecto-badge">Accesorios</span>
+                    </div>
+                    <div class="proyecto-content">
+                        <h3>Tablas para queso</h3>
+                        <p class="proyecto-desc">Diseñadas en madera natural de alta calidad, estas tablas combinan resistencia, belleza y funcionalidad. Perfectas para servir quesos, embutidos, frutas secas o chocolates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Llamada a la acción -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-proyectos">
+                <h2>¿Te gustaría ver tu proyecto aquí?</h2>
+                <p>Contáctanos y comencemos a trabajar en la transformación de tus espacios.</p>
+                <a href="proceso.html" class="btn btn-large">Contactanos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: En Dónde Estamos -->
+    <section class="contact-section" id="contacto">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-content">
+                    <div class="map-section">
+                        <div class="map-visual">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3748.102762546342!2d-98.72903212661991!3d20.04613797964586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842eeef8364d9bcf%3A0xd7ba69856107117d!2sHidrosistemas!5e0!3m2!1sen!2smx!4v1760387857696!5m2!1sen!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="contact-info-section">
+                        <h3>Contáctanos</h3>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Dirección</h4>
+                                    <p>Circuito Emprendedores No. 19, Parque Industrial Metropolitano, Mineral de la Reforma, Hgo. CP 42186</p>
+                                </div>
+                            </div>
+                            <div class="contact-container">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-text">
+                                <h4>Teléfonos</h4>
+                                <p>
+                                    <a href="tel:+527717132513">771 713 2513</a><br>
+                                    <a href="tel:+527717132514">771 713 2514</a><br>
+                                    <a href="tel:+527717181044">771 718 1044</a>
+                                </p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item whatsapp-item">
+                                <div class="contact-icon contact-whatsapp-icon">
+                                <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="contact-whatsapp">
+                                <h4>WhatsApp</h4>
+                                <p>
+                                    <a href="https://wa.me/52771712167150" target="_blank">771 712 167 150</a>
+                                </p>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Email</h4>
+                                    <p><a href="mailto:ventas@hidrosistemas.com.mx">ventas@hidrosistemas.com.mx</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Horario</h4>
+                                    <p>Lun-Vie: 9:00 AM - 6:00 PM</p>
+                                    <p>Sábado: 9:00 AM - 1:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button class="btn-scroll-top" aria-label="Volver arriba">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+        </svg>
+    </button>
+
+    <!-- Footer -->
+  <div id="footer-container"></div>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"
+    ></script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"
+    ></script>
+
+    <script>
+        // Animación de elementos al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const sectionTitles = document.querySelectorAll('.section-title');
+            const proyectoCards = document.querySelectorAll('.proyecto-card');
+            const ctaProyectos = document.querySelector('.cta-proyectos');
+            const filtroBtns = document.querySelectorAll('.filtro-btn');
+            const mapVisual = document.querySelector('.map-visual');
+            const contactInfo = document.querySelector('.contact-info-section');
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Animación para títulos de sección
+                        if (entry.target.classList.contains('section-title')) {
+                            entry.target.classList.add('animated');
+                        }
+                        
+                        // Animación escalonada para proyectos
+                        if (entry.target.classList.contains('proyectos-grid')) {
+                            proyectoCards.forEach((card, index) => {
+                                setTimeout(() => {
+                                    card.classList.add('animated');
+                                }, index * 200);
+                            });
+                        }
+                        
+                        // Animación para CTA
+                        if (entry.target.classList.contains('cta-proyectos')) {
+                            setTimeout(() => {
+                                ctaProyectos.classList.add('animated');
+                            }, 300);
+                        }
+                        
+                        // Animación para botones de filtro
+                        if (entry.target.classList.contains('filtros-proyectos')) {
+                            filtroBtns.forEach((btn, index) => {
+                                setTimeout(() => {
+                                    btn.classList.add('animated');
+                                }, index * 100);
+                            });
+                        }
+                        
+                        // Animación para mapa y contacto
+                        if (entry.target.classList.contains('contact-content')) {
+                            setTimeout(() => {
+                                if (mapVisual) mapVisual.classList.add('animated');
+                            }, 300);
+                            
+                            setTimeout(() => {
+                                if (contactInfo) contactInfo.classList.add('animated');
+                            }, 600);
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // Observar elementos para animaciones
+            fadeElements.forEach(el => observer.observe(el));
+            sectionTitles.forEach(title => observer.observe(title));
+            document.querySelector('.proyectos-grid') && observer.observe(document.querySelector('.proyectos-grid'));
+            document.querySelector('.cta-proyectos') && observer.observe(document.querySelector('.cta-proyectos'));
+            document.querySelector('.filtros-proyectos') && observer.observe(document.querySelector('.filtros-proyectos'));
+            document.querySelector('.contact-content') && observer.observe(document.querySelector('.contact-content'));
+            
+            // Activar animaciones para elementos ya visibles al cargar
+            setTimeout(() => {
+                fadeElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 100);
+        });
+
+        // Filtrado de proyectos con animaciones
+        document.querySelectorAll('.filtro-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remover clase active de todos los botones
+                document.querySelectorAll('.filtro-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Agregar clase active al botón clickeado
+                this.classList.add('active');
+                
+                // Obtener la categoría a filtrar
+                const categoria = this.getAttribute('data-categoria');
+                
+                // Animación de filtrado
+                document.querySelectorAll('.proyecto-card').forEach(proyecto => {
+                    const proyectoCategoria = proyecto.getAttribute('data-categoria');
+                    
+                    if (categoria === 'todos' || proyectoCategoria === categoria) {
+                        // Proyecto debe mostrarse
+                        proyecto.classList.remove('filtered-out');
+                        proyecto.classList.add('filtered-in');
+                        proyecto.style.display = 'block';
+                    } else {
+                        // Proyecto debe ocultarse
+                        proyecto.classList.remove('filtered-in');
+                        proyecto.classList.add('filtered-out');
+                        
+                        // Ocultar después de la animación
+                        setTimeout(() => {
+                            proyecto.style.display = 'none';
+                        }, 500);
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="./js/components.js"></script>
+</body>
+</html>

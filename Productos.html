@@ -8,13 +8,102 @@
     <meta name="author" content="A Regular Page by EduardoPP & AlejandroSC">
     <meta name="robots" content="index, follow">
     <meta name="copyright" content="PRACTIK-BOX" />
-    <title>Colecciones - PRACTIK-BOX</title>
+    <title>Lineas</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="Imagenes/Index/icon.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* ===== HERO PRODUCTOS ===== */
+        /* GRID PRINCIPAL */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 15px;
+        }
+
+        /* TARJETA CLICKEABLE */
+        .card {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            text-decoration: none;
+            border-radius: 2px;
+            display: block;
+            transition: transform 0.25s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Overlay superior */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 55%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(0,0,0,0));
+        }
+
+        /* Texto sobre la imagen */
+        .text {
+            position: absolute;
+            top: 7px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+
+        .text h2 {
+            font-size: 46px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin: 0;
+            color: white;
+        }
+
+        .line {
+            width: 60px;
+            height: 1px;
+            background: white;
+            margin: 10px auto;
+            opacity: 0.7;
+        }
+
+        .text span {
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            letter-spacing: 2px;
+            opacity: 0.85;
+        }
+
+        .text p {
+            margin-top: 12px;
+            font-size: 18px;
+            font-weight: 300;
+        }
+
+        /* COLORES PERSONALIZADOS PARA CADA COLECCIÓN */
+        .zabor .overlay { background: linear-gradient(to bottom, rgba(50,70,45,0.85), transparent); }
+        .ritual .overlay { background: linear-gradient(to bottom, rgba(160,130,90,0.85), transparent); }
+        .mareto .overlay { background: linear-gradient(to bottom, rgba(140,170,150,0.85), transparent); }
+        .focus .overlay { background: linear-gradient(to bottom, rgba(20,50,70,0.90), transparent); }
+        .calma .overlay { background: linear-gradient(to bottom, rgba(90,90,90,0.75), transparent); }
+        .rincon .overlay { background: linear-gradient(to bottom, rgba(150,70,40,0.90), transparent); }
+
+        /* HERO PRODUCTOS */
         .hero-productos {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Imagenes/Productos/Hero-Productos.png');
             background-size: cover;
@@ -34,137 +123,27 @@
             color: white;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
+
         .hero-content-productos {
             opacity: 0;
             transform: translateY(40px);
             animation: fadeInUp 1s ease 0.3s forwards;
         }
-        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-        /* ===== SECCIÓN MUKER (LAS 6 TARJETAS) ===== */
+        @keyframes fadeInUp {
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* SECCIÓN DE COLECCIONES */
         .categorias-muker {
             padding: 2rem 0 4rem 0;
             background: #fff;
         }
-        .muker-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-        .muker-card {
-            position: relative;
-            height: 260px;
-            border-radius: 0;
-            overflow: hidden;
-            display: block;
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .muker-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-        .muker-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-        .muker-card:hover img { transform: scale(1.05); }
-        .muker-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 25px 20px;
-            text-align: center;
-            background: rgba(0,0,0,0.25);
-            backdrop-filter: blur(6px);
-            color: white;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .muker-overlay h3 {
-            font-family: "Playfair Display", serif;
-            font-size: 2.4rem;
-            font-weight: 700;
-            margin: 0;
-            letter-spacing: 2px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-            color: black;
-        }
-        .muker-overlay span {
-            display: block;
-            font-size: 0.9rem;
-            margin-top: 5px;
-            font-family: "Open Sans", sans-serif;
-            letter-spacing: 2px;
-            opacity: 0.9;
-        }
-        .muker-overlay span::before,
-        .muker-overlay span::after {
-            content: "";
-            display: inline-block;
-            width: 30px;
-            height: 1px;
-            background: white;
-            margin: 0 10px;
-            vertical-align: middle;
-        }
-        .muker-overlay p {
-            margin-top: 10px;
-            font-size: 1rem;
-            font-family: "Open Sans", sans-serif;
-            opacity: 0.95;
-        }
-        /* Colores de fondo para cada colección (fallback si la imagen no carga) */
-        .verde { background: #2f3f35; }
-        .madera { background: #8c6a4f; }
-        .menta { background: #b9c7b7; }
-        .azul { background: #2c3a4a; }
-        .blanco { background: #d8d4ce; }
-        .terracota { background: #8b4b35; }
 
-        /* ===== INFO EXTRA (por qué elegirnos) ===== */
-        .info-extra {
-            background: white;
-            padding: 3rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-top: 3rem;
-        }
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-        .info-item {
-            text-align: center;
-            padding: 1.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-            border-radius: 8px;
-        }
-        .info-item.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .info-item:hover {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 150%);
-            color: white;
-        }
-        .info-item:hover h3, .info-item:hover .info-icon { color: var(--color-neutral); }
-        .info-icon {
-            font-size: 3rem;
-            color: var(--color-icon);
-            margin-bottom: 1rem;
-        }
-
-        /* ===== WOOD NOTICE (aviso de madera) ===== */
+        /* AVISO DE MADERA NATURAL */
         .wood-notice {
             max-width: 1200px;
             margin: 40px auto;
@@ -178,10 +157,12 @@
             transform: translateY(30px) scale(0.95);
             transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+
         .wood-notice.animated {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
+
         .wood-notice::before {
             content: "";
             position: absolute;
@@ -193,12 +174,17 @@
             transform: translateX(-100%);
             transition: transform 1s ease 0.3s;
         }
-        .wood-notice.animated::before { transform: translateX(0); }
+
+        .wood-notice.animated::before { 
+            transform: translateX(0); 
+        }
+
         .notice-header {
             display: flex;
             align-items: center;
             margin-bottom: 30px;
         }
+
         .icon-container {
             width: 60px;
             height: 60px;
@@ -209,14 +195,26 @@
             justify-content: center;
             margin-right: 20px;
         }
-        .tree-icon { font-size: 28px; color: #8b6b46; }
-        .notice-title { font-size: 28px; font-weight: 600; color: #5c4b37; }
+
+        .tree-icon { 
+            font-size: 28px; 
+            color: #8b6b46; 
+        }
+
+        .notice-title { 
+            font-size: 28px; 
+            font-weight: 600; 
+            color: #5c4b37; 
+            margin: 0;
+        }
+
         .variations-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
             margin: 35px 0;
         }
+
         .variation-item {
             background-color: #f8f3ea;
             padding: 25px;
@@ -225,45 +223,161 @@
             opacity: 0;
             transform: translateY(30px);
         }
+
         .wood-notice.animated .variation-item {
             opacity: 1;
             transform: translateY(0);
         }
+
         .wood-notice.animated .variation-item:nth-child(1) { transition-delay: 0.7s; }
         .wood-notice.animated .variation-item:nth-child(2) { transition-delay: 0.9s; }
         .wood-notice.animated .variation-item:nth-child(3) { transition-delay: 1.1s; }
+
         .variation-item:hover {
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 150%);
             color: white;
         }
-        .variation-item:hover .variation-title { color: white; }
-        .variation-title { font-size: 20px; font-weight: 600; color: var(--color-icon); }
-        /* ===== UTILIDADES ===== */
-        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* ===== RESPONSIVE ===== */
+        .variation-item:hover .variation-title { 
+            color: white; 
+        }
+
+        .variation-title { 
+            font-size: 20px; 
+            font-weight: 600; 
+            color: var(--color-icon); 
+            margin: 10px 0;
+        }
+
+        .variation-icon {
+            font-size: 2rem; 
+            margin-bottom: 10px; 
+            color: var(--color-primary);
+        }
+
+        /* INFO EXTRA (por qué elegirnos) */
+        .info-extra {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .info-item {
+            text-align: center;
+            padding: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            border-radius: 8px;
+        }
+
+        .info-item.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .info-item:hover {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 150%);
+            color: white;
+        }
+
+        .info-item:hover h3, 
+        .info-item:hover .info-icon { 
+            color: white; 
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            color: var(--color-icon);
+            margin-bottom: 1rem;
+        }
+
+        /* UTILIDADES */
+        .fade-in { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            transition: all 0.6s ease; 
+        }
+
+        .fade-in.visible { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 968px) {
-            .muker-grid { grid-template-columns: repeat(2, 1fr); }
+            .grid { 
+                grid-template-columns: repeat(2, 1fr); 
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
         }
+
         @media (max-width: 768px) {
-            .hero-productos h1 { font-size: 2.5rem; }
-            .hero-productos { height: 40vh; }
-            .muker-grid { grid-template-columns: 1fr; }
-            .muker-card { height: 220px; }
-            .footer-content { grid-template-columns: 1fr; text-align: center; }
-            .contact-content { grid-template-columns: 1fr; }
-            .notice-header { flex-direction: column; text-align: center; }
-            .icon-container { margin-right: 0; margin-bottom: 15px; }
+            .hero-productos h1 { 
+                font-size: 2.5rem; 
+            }
+            
+            .hero-productos { 
+                height: 40vh; 
+            }
+            
+            .grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .card { 
+                height: 220px; 
+            }
+            
+            .notice-header { 
+                flex-direction: column; 
+                text-align: center; 
+            }
+            
+            .icon-container { 
+                margin-right: 0; 
+                margin-bottom: 15px; 
+            }
+            
+            .contact-info-section {
+                padding: 30px 20px;
+            }
         }
+
         @media (max-width: 480px) {
-            .muker-overlay h3 { font-size: 2rem; }
-            .muker-overlay p { font-size: 0.9rem; }
+            .text h2 { 
+                font-size: 36px; 
+            }
+            
+            .text p { 
+                font-size: 16px; 
+            }
+            
+            .info-extra {
+                padding: 2rem 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-<div id="header-container"></div>
+    <div id="header-container"></div>
 
     <!-- Hero Section -->
     <section class="hero-productos" id="hero-productos">
@@ -275,111 +389,130 @@
         </div>
     </section>
 
-    <!-- SECCIÓN PRINCIPAL: LAS 6 COLECCIONES (ESTILO MUKER) -->
+    <!-- SECCIÓN PRINCIPAL: LAS 6 COLECCIONES -->
     <section class="categorias-muker">
-        <div class="container">
-            <div class="muker-grid">
-                <!-- Card 1: ÁUREA - Cocinas -->
-                <a href="#" class="muker-card verde">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Colección Áurea - Cocinas">
-                    <div class="muker-overlay">
-                        <h3>ÁUREA</h3>
-                        <span>by PRACTIK</span>
-                        <p>Cocinas a medida</p>
-                    </div>
-                </a>
-                <!-- Card 2: RITUAL - Clósets -->
-                <a href="#" class="muker-card madera">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Colección Ritual - Clósets">
-                    <div class="muker-overlay">
-                        <h3>RITUAL</h3>
-                        <span>by PRACTIK</span>
-                        <p>Clósets y vestidores a medida</p>
-                    </div>
-                </a>
-                <!-- Card 3: MARETO - Infantil -->
-                <a href="#" class="muker-card menta">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Colección Mareto - Infantil">
-                    <div class="muker-overlay">
-                        <h3>MARETO</h3>
-                        <span>by PRACTIK</span>
-                        <p>Recámaras infantiles</p>
-                    </div>
-                </a>
-                <!-- Card 4: FOCO - Oficina -->
-                <a href="#" class="muker-card azul">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Colección Foco - Oficina">
-                    <div class="muker-overlay">
-                        <h3>FOCO</h3>
-                        <span>by PRACTIK</span>
-                        <p>Mobiliario de oficina</p>
-                    </div>
-                </a>
-                <!-- Card 5: CALMA - Baño -->
-                <a href="#" class="muker-card blanco">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Colección Calma - Baño">
-                    <div class="muker-overlay">
-                        <h3>CALMA</h3>
-                        <span>by PRACTIK</span>
-                        <p>Muebles de baño a medida</p>
-                    </div>
-                </a>
-                <!-- Card 6: DETALLE - Accesorios -->
-                <a href="#" class="muker-card terracota">
-                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Colección Detalle - Accesorios">
-                    <div class="muker-overlay">
-                        <h3>DETALLE</h3>
-                        <span>by PRACTIK</span>
-                        <p>Accesorios y complementos</p>
-                    </div>
-                </a>
-            </div>
+        <div class="grid">
+            <!-- ZABOR -->
+            <a href="coleccion.html?id=zabor" class="card zabor">
+                <img src="./Imagenes/Productos/Lineas/Zabor.png" alt="Colección Zabor - Cocinas a medida">
+                <div class="overlay"></div>
+                <div class="text">
+                    <h2>ZABOR</h2>
+                    <div class="line"></div>
+                    <span>by MUKER</span>
+                    <p>Cocinas a medida</p>
+                </div>
+            </a>
+
+            <!-- RITUAL -->
+            <a href="coleccion.html?id=ritual" class="card ritual">
+                <img src="./Imagenes/Productos/Lineas/Ritual.png" alt="Colección Ritual - Clósets y vestidores">
+                <div class="overlay"></div>
+                <div class="text">
+                    <h2>RITUAL</h2>
+                    <div class="line"></div>
+                    <span>by MUKER</span>
+                    <p>Clósets y vestidores</p>
+                </div>
+            </a>
+
+            <!-- MARETO -->
+            <a href="coleccion.html?id=mareto" class="card mareto">
+                <img src="./Imagenes/Productos/Lineas/Mareto.png" alt="Colección Mareto - Recámaras infantiles">
+                <div class="overlay"></div>
+                <div class="text">
+                    <h2>MARETO</h2>
+                    <div class="line"></div>
+                    <span>by MUKER</span>
+                    <p>Recámaras infantiles</p>
+                </div>
+            </a>
+
+            <!-- FOCUS -->
+            <a href="coleccion.html?id=focus" class="card focus">
+                <img src="./Imagenes/Productos/Lineas/Focus.png" alt="Colección Focus - Mobiliario oficina">
+                <div class="overlay"></div>
+                <div class="text">
+                    <h2>FOCUS</h2>
+                    <div class="line"></div>
+                    <span>by MUKER</span>
+                    <p>Mobiliario oficina</p>
+                </div>
+            </a>
+
+            <!-- CALMA -->
+            <a href="coleccion.html?id=calma" class="card calma">
+                <img src="./Imagenes/Productos/Lineas/Calma.png" alt="Colección Calma - Baños a medida">
+                <div class="overlay"></div>
+                <div class="text">
+                    <h2>CALMA</h2>
+                    <div class="line"></div>
+                    <span>by MUKER</span>
+                    <p>Baños a medida</p>
+                </div>
+            </a>
+
+            <!-- RINCÓN -->
+            <a href="coleccion.html?id=rincon" class="card rincon">
+                <img src="./Imagenes/Productos/Lineas/Rincon.png" alt="Colección Rincón - Accesorios">
+                <div class="overlay"></div>
+                <div class="text">
+                    <h2>RINCÓN</h2>
+                    <div class="line"></div>
+                    <span>by MUKER</span>
+                    <p>Accesorios</p>
+                </div>
+            </a>
         </div>
     </section>
 
     <!-- Wood Notice (Aviso de madera natural) -->
     <section class="wood-notice" id="wood-notice">
-        <div class="notice-header">
-            <div class="icon-container"><i class="fas fa-tree tree-icon"></i></div>
-            <h2 class="notice-title">Madera natural, piezas únicas</h2>
-        </div>
-        <p class="notice-content">Es importante que sepas que, al ser un producto elaborado con madera natural, cada pieza es única. Las imágenes son una representación, pero pueden existir variaciones en:</p>
-        <div class="variations-list">
-            <div class="variation-item">
-                <i class="fas fa-palette variation-icon" style="font-size: 2rem; margin-bottom: 10px; color: var(--color-primary);"></i>
-                <h3 class="variation-title">Color y Tono</h3>
-                <p>Dependiendo de la especie de madera y su lote. Cada árbol aporta su propia paleta.</p>
+        <div class="container">
+            <div class="notice-header">
+                <div class="icon-container">
+                    <i class="fas fa-tree tree-icon"></i>
+                </div>
+                <h2 class="notice-title">Madera natural, piezas únicas</h2>
             </div>
-            <div class="variation-item">
-                <i class="fas fa-ruler variation-icon" style="font-size: 2rem; margin-bottom: 10px; color: var(--color-primary);"></i>
-                <h3 class="variation-title">Veta y Textura</h3>
-                <p>Cada árbol tiene un dibujo natural distinto, como huellas dactilares.</p>
-            </div>
-            <div class="variation-item">
-                <i class="fas fa-circle variation-icon" style="font-size: 2rem; margin-bottom: 10px; color: var(--color-primary);"></i>
-                <h3 class="variation-title">Nudos y Marcas</h3>
-                <p>Son la "huella dactilar" de la madera y prueba de su autenticidad.</p>
+            <p class="notice-content">Es importante que sepas que, al ser un producto elaborado con madera natural, cada pieza es única. Las imágenes son una representación, pero pueden existir variaciones en:</p>
+            <div class="variations-list">
+                <div class="variation-item">
+                    <i class="fas fa-palette variation-icon"></i>
+                    <h3 class="variation-title">Color y Tono</h3>
+                    <p>Dependiendo de la especie de madera y su lote. Cada árbol aporta su propia paleta.</p>
+                </div>
+                <div class="variation-item">
+                    <i class="fas fa-ruler variation-icon"></i>
+                    <h3 class="variation-title">Veta y Textura</h3>
+                    <p>Cada árbol tiene un dibujo natural distinto, como huellas dactilares.</p>
+                </div>
+                <div class="variation-item">
+                    <i class="fas fa-circle variation-icon"></i>
+                    <h3 class="variation-title">Nudos y Marcas</h3>
+                    <p>Son la "huella dactilar" de la madera y prueba de su autenticidad.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Información adicional (por qué elegirnos) -->
     <section class="section">
-        <div class="container" id="info-extra">
+        <div class="container">
             <div class="info-extra">
                 <h2 class="fade-in">¿Por qué elegir nuestras colecciones?</h2>
                 <div class="info-grid">
-                    <div class="info-item">
+                    <div class="info-item fade-in">
                         <div class="info-icon"><i class="fas fa-award"></i></div>
                         <h3>Calidad garantizada</h3>
                         <p>Materiales sostenibles y artesanía experta en cada una de nuestras 6 líneas de diseño.</p>
                     </div>
-                    <div class="info-item">
+                    <div class="info-item fade-in">
                         <div class="info-icon"><i class="fas fa-shipping-fast"></i></div>
                         <h3>Envío seguro</h3>
                         <p>Embalaje especializado para que tu colección llegue en perfecto estado.</p>
                     </div>
-                    <div class="info-item">
+                    <div class="info-item fade-in">
                         <div class="info-icon"><i class="fas fa-ruler-combined"></i></div>
                         <h3>Personalización</h3>
                         <p>Cada colección se adapta a tus medidas y necesidades específicas.</p>
@@ -389,7 +522,8 @@
         </div>
     </section>
 
-        <section class="contact-section" id="contacto">
+    <!-- Sección Contacto -->
+     <section class="contact-section" id="contacto">
         <div class="container">
             <div class="contact-container">
                 <div class="contact-content">
@@ -471,73 +605,55 @@
         </div>
     </section>
 
-
-    <button class="btn-scroll-top" aria-label="Volver arriba">
-        <svg viewBox="0 0 24 24" width="24" fill="white"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+    <button class="btn-scroll-top" id="btnScrollTop" aria-label="Volver arriba">
+        <svg viewBox="0 0 24 24" width="24" fill="white">
+            <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+        </svg>
     </button>
 
-<div id="footer-container"></div>
+    <div id="footer-container"></div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
     
     <script>
-        // Script simplificado: solo animaciones y año actual
         document.addEventListener('DOMContentLoaded', function() {
-            
-            // Animaciones al hacer scroll
+            // Configurar animaciones
             configurarAnimaciones();
             
-            // Scroll suave al botón de volver arriba
-            document.querySelector('.btn-scroll-top').addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+            // Configurar botón scroll top
+            configurarScrollTop();
         });
 
         function configurarAnimaciones() {
-            const elementos = document.querySelectorAll('.fade-in, .info-item, .wood-notice, .muker-card');
+            const elementos = document.querySelectorAll('.fade-in, .info-item, .wood-notice');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('animated', 'visible');
-                        
-                        // Animación especial para las tarjetas MUKER (efecto cascada)
-                        if (entry.target.classList.contains('muker-card')) {
-                            const cards = document.querySelectorAll('.muker-card');
-                            cards.forEach((card, index) => {
-                                setTimeout(() => {
-                                    card.style.opacity = '1';
-                                    card.style.transform = 'translateY(0)';
-                                }, index * 100);
-                            });
-                        }
                     }
                 });
             }, { threshold: 0.2, rootMargin: '0px' });
             
-            elementos.forEach(el => {
-                if (el.classList.contains('muker-card')) {
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(20px)';
-                }
-                observer.observe(el);
-            });
+            elementos.forEach(el => observer.observe(el));
+        }
+
+        function configurarScrollTop() {
+            const btnScrollTop = document.getElementById('btnScrollTop');
             
-            // Forzar la animación de las tarjetas si ya son visibles al cargar
-            setTimeout(() => {
-                const cards = document.querySelectorAll('.muker-card');
-                cards.forEach((card, index) => {
-                    const rect = card.getBoundingClientRect();
-                    if (rect.top < window.innerHeight && rect.bottom > 0) {
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, index * 100);
-                    }
-                });
-            }, 200);
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    btnScrollTop.classList.add('visible');
+                } else {
+                    btnScrollTop.classList.remove('visible');
+                }
+            });
+
+            btnScrollTop.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         }
     </script>
     <script src="./js/components.js"></script>
