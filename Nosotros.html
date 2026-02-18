@@ -19,7 +19,8 @@
     <style>
         /* Hero Section para Nosotros */
         .hero-nosotros {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Imagenes/Nosotros/hero-nosotros.png');
+            position: relative;
+            background: url('Imagenes/Nosotros/hero-nosotros.png');
             background-size: cover;
             background-position: center;
             height: 60vh;
@@ -29,6 +30,19 @@
             text-align: center;
             color: white;
             margin-bottom: 3rem;
+            z-index: 1;
+        }
+
+        .hero-nosotros::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            opacity: 0.1; /* Ajusta la opacidad para que se vea la imagen */
+            z-index: -1;
         }
         
         .hero-nosotros h1 {

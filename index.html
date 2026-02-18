@@ -214,36 +214,116 @@
     color: var(--color-secondary);
 }
 
-/* Galería de proyectos */
-.project-gallery {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 30px;
+/* ===== TARJETAS DE MUEBLES Y ACCESORIOS - MEJORADAS ===== */
+/* Respetando tu estructura original pero con mejor presencia visual */
+.card {
+  width: 450px;
+  height: 350px; /* Ligeramente más alto para mejor proporción */
+  border-radius: 20px; /* Más elegante */
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Sombra más pronunciada */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transición más suave */
+  cursor: pointer;
 }
 
-.project-gallery img {
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 2px solid white;
+/* Efecto al pasar el mouse - más notorio */
+.card:hover {
+  transform: translateY(-15px) scale(1.02); /* Se eleva más y crece ligeramente */
+  box-shadow: 0 25px 40px rgba(181, 92, 58, 0.3); /* Sombra con color de marca */
+}
+
+/* Overlay con gradiente más suave y elegante */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2) 0%,
+        rgba(0,0,0,0.7) 100%
+    );
+    z-index: 1;
     transition: all 0.3s ease;
 }
 
-.project-gallery img:hover {
-    transform: scale(1.1);
-    border-color: var(--color-secondary);
+.card:hover::before {
+    background: linear-gradient(
+        to bottom,
+        rgba(181, 92, 58, 0.3) 0%,
+        rgba(44, 44, 44, 0.8) 100%
+    );
 }
 
-.project-gallery span {
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(5px);
-    padding: 8px 15px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    margin-left: 5px;
+.card-content {
+  z-index: 2;
+  position: relative;
+  transform: translateY(0);
+  transition: transform 0.4s ease;
+}
+
+.card:hover .card-content {
+    transform: translateY(-8px); /* El contenido se eleva ligeramente */
+}
+
+.title {
+  font-size: 3rem; /* Un poco más grande */
+  letter-spacing: 4px;
+  margin: 0;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  color: white;
+}
+
+.brand {
+  font-size: 1rem;
+  border-top: 2px solid rgba(255,255,255,0.5);
+  border-bottom: 2px solid rgba(255,255,255,0.5);
+  display: inline-block;
+  padding: 8px 20px;
+  margin: 15px 0;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  font-weight: 300;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Capas de color con degradado (manteniendo tus colores originales) */
+.muebles {
+  background-image: linear-gradient(
+    to bottom, 
+    rgba(45, 52, 54, 0.92) 0%, 
+    rgba(45, 52, 54, 0.6) 100%
+  ), url('./Imagenes/Index/muebles\ personalizados.png');
+}
+
+.accesorios {
+  background-image: linear-gradient(
+    to bottom, 
+    rgba(99, 50, 33, 0.92) 0%, 
+    rgba(99, 50, 33, 0.6) 100%
+  ), url('./Imagenes/Index/Accesorios.png');
+}
+
+/* Ajuste de brillo al pasar el mouse para que la imagen se vea un poco más */
+.card:hover {
+  filter: contrast(1.05);
 }
 
 /* Botón principal */
@@ -387,6 +467,11 @@
         height: 50px;
         font-size: 1.2rem;
     }
+    
+    .card {
+        width: 400px;
+        height: 320px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -436,6 +521,16 @@
     
     .slider-arrow.next {
         right: 15px;
+    }
+    
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .card {
+        width: 100%;
+        max-width: 450px;
     }
 }
 
@@ -537,79 +632,91 @@
 <!-- Slider de Presentación MUKER -->
 <!-- Slider de Presentación MUKER -->
 <section class="muker-slider-section">
-    <div class="slider-container">
-        <div class="slider-track">
-            <!-- SLIDE 1: Nosotros -->
-            <div class="slider-slide">
-                <div class="slide-background" style="background-image: url('Imagenes/Index/Introduction-image.jpg');">
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content">
-                        <span class="slide-tag">Nuestras líneas</span>
-                        <h2 class="slide-title">Diseños personalizados en madera</h2>
-                        <a href="Productos.html" class="slide-button">
-                            Explorar Lineas <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <!-- SLIDE 2: Líneas de Productos -->
-            <div class="slider-slide">
-                <div class="slide-background" style="background-image: url('Imagenes/Nosotros/hero-nosotros.png');">
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content">
-                        <span class="slide-tag">Nosotros</span>
-                        <h2 class="slide-title">Nuestra Historia</h2>
-                        <p class="slide-description">
-                            Conoce el corazón y el alma detrás de cada pieza que creamos.
-                        </p>
-                        <a href="Nosotros.html" class="slide-button">
-                            Conocer nuestra historia <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDE 3: Proyectos Destacados -->
-            <div class="slider-slide">
-                <div class="slide-background" style="background-image: url('Imagenes/Proyectos/hero-proyectos.png');">
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content">
-                        <span class="slide-tag">Proyecto destacado</span>
-                        <h2 class="slide-title">Nuestros proyectos destacados</h2>
-                        <p class="slide-description">
-                            Descubre cómo transformamos espacios con muebles personalizados de alta calidad.
-                        </p>
-                        <a href="Proyectos.html" class="slide-button">
-                            Ver todos los proyectos <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
+<div class="slider-container">
+    <div class="slider-track">
+        <!-- SLIDE 1: Nuestras líneas -->
+        <div class="slider-slide">
+            <div class="slide-background" style="background-image: url('Imagenes/Index/Introduction-image.jpg');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="slide-tag">Nuestras líneas</span>
+                    <h2 class="slide-title">Diseños personalizados en madera</h2>
+                    <a href="Productos.html" class="slide-button">
+                        Explorar Lineas <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
 
-        <!-- Controles del slider -->
-        <button class="slider-arrow prev">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="slider-arrow next">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-
-        <!-- Indicadores -->
-        <div class="slider-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+        <!-- SLIDE 2: Nosotros -->
+        <div class="slider-slide">
+            <div class="slide-background" style="background-image: url('Imagenes/Nosotros/hero-nosotros.png');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="slide-tag">Nosotros</span>
+                    <h2 class="slide-title">Nuestra Historia</h2>
+                    <p class="slide-description">
+                        Conoce el corazón y el alma detrás de cada pieza que creamos.
+                    </p>
+                    <a href="Nosotros.html" class="slide-button">
+                        Conocer nuestra historia <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
         </div>
 
-        <!-- Progreso del slider -->
-        <div class="slider-progress">
-            <div class="progress-bar"></div>
+        <!-- SLIDE 3: Proyectos Destacados -->
+        <div class="slider-slide">
+            <div class="slide-background" style="background-image: url('Imagenes/Proyectos/hero-proyectos.png');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="slide-tag">Proyecto destacado</span>
+                    <h2 class="slide-title">Nuestros proyectos destacados</h2>
+                    <p class="slide-description">
+                        Descubre cómo transformamos espacios con muebles personalizados de alta calidad.
+                    </p>
+                    <a href="Proyectos.html" class="slide-button">
+                        Ver todos los proyectos <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
         </div>
+
+        <!-- SLIDE 4: Cotización (DENTRO del slider-track) -->
+        <div class="slider-slide">
+            <div class="slide-background" style="background-image: url('Imagenes/Proceso/hero-proceso.jpg');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="slide-tag">Cotización</span>
+                    <h2 class="slide-title">Solicita tu cotización personalizada</h2>
+                    <a href="proceso.html" class="slide-button">
+                        Solicitar cotización <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- Controles del slider -->
+    <button class="slider-arrow prev">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="slider-arrow next">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <!-- Indicadores -->
+    <div class="slider-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
     </div>
+
+    <!-- Progreso del slider -->
+    <div class="slider-progress">
+        <div class="progress-bar"></div>
+    </div>
+</div>
 </section>
 
     <!-- Sección Introducción -->
@@ -638,32 +745,24 @@
     </section>
     <a href="Nosotros.html" class="btn btn-readmore fade-in">Leer mas...</a>
 
-    <!-- Categorías principales -->
+    <!-- Categorías principales - Versión mejorada visualmente pero respetando tu estructura -->
     <section class="section">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>Nuestros productos.</h2>
-            </div>
-            <div class="categories">
-                <div class="category-card fade-in">
-                    <div class="category-img" style="background-image: url('Imagenes/Index/muebles personalizados.png');"></div>
-                    <div class="category-content">
-                        <h3>Muebles Personalizados</h3>
-                        <p>Diseñamos y fabricamos muebles a medida para tu hogar, empresa o comercio.<br> Closets, cocinas, muebles para baño, repisas o muebles de acuerdo a tus necesidades.</p>
-                        <a href="proceso.html" class="btn">Cotizar</a>
-                        <a href="Productos.html" class="btn btn-acc">Ver productos</a>
-                    </div>
+        <div class="card-container" style="display: flex; justify-content: center; gap: 230px; padding: 20px; max-width: 1200px; margin: 0 auto; flex-wrap: wrap;">
+            <a href="Productos.html" class="card muebles">
+                <div class="card-content">
+                    <h2 class="title">NUESTRAS LINEAS</h2>
+                    <div class="brand">by MUKER</div>
+                    <p class="subtitle">Diseños personalizados</p>
                 </div>
-                <div class="category-card fade-in">
-                    <div class="category-img" style="background-image: url('Imagenes/Index/Accesorios.png');"></div>
-                    <div class="category-content">
-                        <h3>Accesorios</h3>
-                        <p>Productos únicos de venta directa para decorar y organizar tu espacio. Cajas de té, tablas de queso y más.</p>
-                        <a href="proceso.html" class="btn">Cotizar</a>
-                        <a href="coleccion.html?id=rincon" class="btn btn-acc">Ver accesorios</a>
-                    </div>
+            </a>
+
+            <a href="coleccion.html?id=rincon" class="card accesorios">
+                <div class="card-content">
+                    <h2 class="title">ACCESORIOS</h2>
+                    <div class="brand">by MUKER</div>
+                    <p class="subtitle">Decoración y Hogar</p>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
