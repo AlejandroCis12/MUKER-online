@@ -1,4 +1,3 @@
-// js/components.js - Adaptado para MUKER
 class ComponentLoader {
     constructor() {
         this.components = {
@@ -42,11 +41,11 @@ class ComponentLoader {
         const navLinks = document.querySelector('.nav-links');
         
         if (menuBtn && navLinks) {
-            console.log('Menú móvil inicializado'); // Para verificar que funciona
+            console.log('Menú móvil inicializado');
             
             // Evento para abrir/cerrar menú
             menuBtn.addEventListener('click', function(e) {
-                e.stopPropagation(); // Evita propagación
+                e.stopPropagation();
                 navLinks.classList.toggle('active');
                 menuBtn.classList.toggle('active');
                 
@@ -69,7 +68,7 @@ class ComponentLoader {
                 });
             });
             
-            // Cerrar menú al hacer clic fuera (opcional)
+            // Cerrar menú al hacer clic fuera
             document.addEventListener('click', (e) => {
                 if (window.innerWidth <= 768 && 
                     !navLinks.contains(e.target) && 
@@ -98,18 +97,23 @@ class ComponentLoader {
             // Después de cargar header, cargar footer
             return this.loadComponent('footer');
         }).then(() => {
-            // Inicializar otras funcionalidades globales
+            // Inicializar otras funcionalidades GLOBALES después de que TODO esté cargado
             this.initScrollEffects();
             this.initSmoothScroll();
             this.initScrollTopButton();
+            
+            // Inicializar slider
+            setTimeout(() => {
+                new MukerSlider();
+            }, 100);
         });
     }
 
     initScrollEffects() {
-        // Efecto de header al hacer scroll
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             if (header) {
+                // Solo efecto de opacidad cuando se hace scroll (opcional)
                 if (window.scrollY > 100) {
                     header.classList.add('scrolled');
                 } else {
@@ -184,7 +188,7 @@ class MukerSlider {
         this.dots = document.querySelectorAll('.dot');
         this.progressBar = document.querySelector('.progress-bar');
         
-        if (!this.track) return;
+        if (!this.track || !this.slides.length) return;
         
         this.currentIndex = 0;
         this.totalSlides = this.slides.length;
@@ -221,8 +225,11 @@ class MukerSlider {
         });
         
         // Pausar autoplay al hacer hover
-        this.track.addEventListener('mouseenter', () => this.stopAutoPlay());
-        this.track.addEventListener('mouseleave', () => this.startAutoPlay());
+        const sliderContainer = document.querySelector('.slider-container');
+        if (sliderContainer) {
+            sliderContainer.addEventListener('mouseenter', () => this.stopAutoPlay());
+            sliderContainer.addEventListener('mouseleave', () => this.startAutoPlay());
+        }
         
         // Soporte para teclado
         document.addEventListener('keydown', (e) => {
@@ -242,7 +249,7 @@ class MukerSlider {
         
         setTimeout(() => {
             this.isTransitioning = false;
-        }, 800); // Mismo tiempo que la transición CSS
+        }, 800);
     }
     
     updateDots() {
@@ -275,9 +282,8 @@ class MukerSlider {
         
         this.autoPlayInterval = setInterval(() => {
             this.next();
-        }, 6000); // Cambia cada 6 segundos
+        }, 6000);
         
-        // Animación de la barra de progreso
         this.animateProgress();
     }
     
@@ -309,20 +315,15 @@ class MukerSlider {
             } else {
                 width = 0;
             }
-        }, 30); // 6000ms / 200 = 30ms por incremento del 0.5%
+        }, 30);
     }
     
     resetProgress() {
-        this.progressBar.style.width = '0%';
+        if (this.progressBar) {
+            this.progressBar.style.width = '0%';
+        }
     }
 }
-
-// Inicializar después de que cargue el DOM
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        new MukerSlider();
-    }, 500);
-});
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {

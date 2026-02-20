@@ -1,6 +1,3 @@
-
-
-
 :root {
     --color-primary: #b55c3a;     /* Terracota - PRINCIPAL */
     --color-secondary: #c78e3e;    /* Mostaza - secundario */
@@ -11,7 +8,6 @@
     --color-icon: #c78e3e;          /* Mostaza para iconos */
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-
 
 a{
     text-decoration: none;
@@ -37,8 +33,9 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-primary);
 }
 
+
 .logo img {
-  height: 90px;
+  height: 85px;
   width: auto;
   display: block;
   margin-top: 2%;
@@ -52,7 +49,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 6px 30px;
 }
 
-
 .container {
     width: 90%;
     max-width: 1200px;
@@ -60,12 +56,18 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 15px;
 }
 
+/* HEADER*/
 header {
     background: linear-gradient(135deg, var(--color-primary) 0%, #9e4f32 100%);
     box-shadow: 0 4px 20px rgba(181, 92, 58, 0.3);
-    position: sticky;
-    top: 0;
+    position: relative;
     z-index: 1000;
+    width: 100%;
+}
+
+#header-container {
+    position: relative;
+    width: 100%;
 }
 
 .header-content {
@@ -74,6 +76,19 @@ header {
     align-items: center;
     padding: 1rem 0;
 }
+/* ===== LÍNEA AMARILLA DEBAJO DEL HEADER ===== */
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-secondary) 0%, #e5a047 100%);
+    box-shadow: 0 2px 10px rgba(199, 142, 62, 0.5);
+    z-index: 1001;
+}
+
 
 .logo {
     font-size: 0.5rem;
@@ -148,7 +163,7 @@ padding-bottom: 10px;
     margin-left: 15%;
 }
 
-/* ESTILOS DE BOTONES */
+/* ===== BOTONES - INTEGRAMOS VERDE OLIVA ===== */
 .btn {
     display: inline-block;
     padding: 0.8rem 2rem;
@@ -202,7 +217,8 @@ padding-bottom: 10px;
 
 .btn-acc {
     margin-left: 10px;
-    background: linear-gradient(135deg, var(--color-accent) 0%, #6a6540 100%);
+    background: linear-gradient(135deg, var(--color-accent) 0%, #5a5536 100%);
+    box-shadow: 0 4px 15px rgba(124, 119, 74, 0.3);
 }
 
 .btn-acc:hover {
@@ -216,6 +232,7 @@ padding-bottom: 10px;
     overflow: hidden;
 }
 
+
 .intro-section:before {
     content: '';
     position: absolute;
@@ -223,8 +240,8 @@ padding-bottom: 10px;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 0% 0%, var(--color-accent) 0%, transparent 50%);
-    opacity: 0.05;
+    background: radial-gradient(circle at 0% 0%, var(--color-accent) 0%, transparent 70%);
+    opacity: 0.1; 
     z-index: 0;
 }
 
@@ -241,7 +258,7 @@ padding-bottom: 10px;
     font-size: 2.2rem;
     margin-bottom: 1.5rem;
     line-height: 1.3;
-    color: var(--color-primary);
+    color: var(--color-secondary);
 }
 
 .intro-text p {
@@ -274,10 +291,12 @@ padding-bottom: 10px;
     overflow: hidden;
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     transition: transform 0.5s;
+    border: 3px solid var(--color-accent); /* Borde sólido verde oliva */
 }
 
 .intro-image:hover {
     transform: scale(1.03);
+    border-color: var(--color-primary); /* Cambia a terracota al hover */
 }
 
 .intro-image img {
@@ -298,6 +317,21 @@ padding-bottom: 10px;
 
 .section-title h2 {
     color: var(--color-primary);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    border-radius: 2px;
 }
 
 /* Categorías principales */
@@ -318,7 +352,7 @@ padding-bottom: 10px;
 
 .category-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(181, 92, 58, 0.15);
+    box-shadow: 0 15px 30px rgba(124, 119, 74, 0.25);
 }
 
 .category-img {
@@ -338,11 +372,24 @@ padding-bottom: 10px;
 .category-content p {
     padding-bottom: 10px;
 }
-
-/* PROCESO - STEPS EN UNA SOLA LÍNEA */
 .process {
-    background: linear-gradient(135deg, var(--color-primary) 0%, #9e4f32 100%);
+    background: linear-gradient(135deg, var(--color-accent) 0%, #5a5536 100%); /* CAMBIADO A VERDE OLIVA */
     padding: 3rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.process::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.3;
+    pointer-events: none;
 }
 
 .process .section-title h2 {
@@ -353,7 +400,7 @@ padding-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap; /* Esto los mantiene en UNA SOLA LÍNEA */
+    flex-wrap: nowrap;
     gap: 1rem;
     width: 100%;
 }
@@ -417,6 +464,7 @@ padding-bottom: 10px;
     margin-bottom: 1rem;
 }
 
+/* ===== CAMBIO: Hover con mostaza ===== */
 .step:hover {
     transform: translateY(-10px) scale(1.02);
     background: linear-gradient(135deg, var(--color-secondary) 0%, #b57c2e 100%);
@@ -428,7 +476,7 @@ padding-bottom: 10px;
     transform: scale(1.1) rotate(5deg);
 }
 
-/* Botón de scroll */
+/* ===== BOTÓN DE SCROLL - CON VERDE OLIVA ===== */
 .btn-scroll-top {
     position: fixed;
     bottom: 30px;
@@ -436,8 +484,8 @@ padding-bottom: 10px;
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    box-shadow: 0 4px 20px rgba(181, 92, 58, 0.3);
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+    box-shadow: 0 4px 20px rgba(124, 119, 74, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -459,7 +507,7 @@ padding-bottom: 10px;
 
 .btn-scroll-top:hover {
     transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 8px 30px rgba(181, 92, 58, 0.5);
+    box-shadow: 0 8px 30px rgba(124, 119, 74, 0.5);
 }
 
 .btn-scroll-top svg {
@@ -473,8 +521,7 @@ padding-bottom: 10px;
     transform: translateY(-3px);
 }
 
-/* Sección de contacto */
-/* ===== SECCIÓN DE CONTACTO MEJORADA ===== */
+/* ===== SECCIÓN DE CONTACTO - CON MAPA TAMAÑO ORIGINAL ===== */
 .contact-section {
     padding: 40px 0;
     background-color: var(--color-neutral);
@@ -486,7 +533,7 @@ padding-bottom: 10px;
     align-items: stretch;
 }
 
-/* MAPA - TAL COMO LO TIENES (sin cambios) */
+/* MAPA - TAMAÑO ORIGINAL */
 .map-section {
     flex: 1;
     border-radius: 10px;
@@ -499,6 +546,8 @@ padding-bottom: 10px;
     padding-bottom: 75%; 
     height: 0;
     overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .map-visual iframe {
@@ -507,16 +556,17 @@ padding-bottom: 10px;
     left: 0;
     width: 100%;
     height: 100%;
+    border: 0;
 }
 
-/* INFORMACIÓN DE CONTACTO - MEJORADA */
+/* INFO CONTACTO CON VERDE OLIVA */
 .contact-info-section {
     flex: 1;
     background: white;
     border-radius: 15px;
     padding: 35px 30px;
-    box-shadow: 0 10px 30px rgba(181, 92, 58, 0.08);
-    border: 1px solid rgba(181, 92, 58, 0.1);
+    box-shadow: 0 10px 30px rgba(124, 119, 74, 0.12);
+    border: 1px solid rgba(124, 119, 74, 0.15);
 }
 
 .contact-info-section h3 {
@@ -525,7 +575,6 @@ padding-bottom: 10px;
     margin-bottom: 25px;
     padding-bottom: 12px;
     border-bottom: 3px solid var(--color-secondary);
-    position: relative;
 }
 
 .contact-details {
@@ -544,7 +593,7 @@ padding-bottom: 10px;
 }
 
 .contact-item:hover {
-    background: rgba(181, 92, 58, 0.03);
+    background: rgba(124, 119, 74, 0.05);
     transform: translateX(5px);
 }
 
@@ -579,25 +628,20 @@ padding-bottom: 10px;
     font-weight: 600;
 }
 
-.contact-text p {
+.contact-text p,
+.contact-text a {
     color: #555;
     margin: 3px 0;
     line-height: 1.5;
     font-size: 0.95rem;
-}
-
-.contact-text a {
-    color: #555;
     text-decoration: none;
-    transition: color 0.2s ease;
-    display: inline-block;
 }
 
 .contact-text a:hover {
     color: var(--color-secondary);
 }
 
-/* WhatsApp con color especial */
+/* WhatsApp con su color pero con toques de la marca */
 .whatsapp-item .contact-icon {
     background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
 }
@@ -606,65 +650,7 @@ padding-bottom: 10px;
     background: linear-gradient(135deg, var(--color-secondary) 0%, #25D366 100%);
 }
 
-/* Responsive (se mantiene igual) */
-@media (max-width: 992px) {
-    .contact-content {
-        flex-direction: column;
-    }
-    
-    .map-section, 
-    .contact-info-section {
-        width: 100%;
-    }
-    
-    .map-section {
-        padding-top: 0;
-    }
-    
-    .map-visual,
-    .map-visual iframe {
-        min-height: 350px;
-    }
-}
-
-@media (max-width: 768px) {
-    .contact-info-section {
-        padding: 25px;
-    }
-    
-    .contact-info-section h3 {
-        font-size: 1.6rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .contact-info-section {
-        padding: 20px;
-    }
-    
-    .contact-item {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 12px;
-    }
-    
-    .contact-text h4 {
-        text-align: center;
-    }
-    
-    .contact-text p {
-        text-align: center;
-    }
-    
-    .map-visual,
-    .map-visual iframe {
-        min-height: 250px;
-    }
-}
-
-/* Footer */
-/* Footer en Gris */
+/* ===== FOOTER - CON LÍNEA DE COLORES ===== */
 footer {
     background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
     color: white;
@@ -673,7 +659,7 @@ footer {
     overflow: hidden;
 }
 
-/* Línea decorativa superior con tus colores */
+/* Línea decorativa con los tres colores */
 footer::before {
     content: '';
     position: absolute;
@@ -706,7 +692,7 @@ footer::before {
     position: absolute;
     width: 40px;
     height: 3px;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    background: linear-gradient(90deg, var(--color-accent), var(--color-secondary));
     bottom: 0;
     left: 0;
     border-radius: 2px;
@@ -753,7 +739,7 @@ footer::before {
 }
 
 .social-icons a:hover {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-secondary) 100%);
     transform: translateY(-5px) rotate(5deg);
     border-color: transparent;
 }
@@ -778,7 +764,7 @@ footer::before {
     transform: translateY(0);
 }
 
-/* Responsive */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 1100px) {
     .fondo{
         padding: 0px 3px;
@@ -791,9 +777,8 @@ footer::before {
         gap: 30px;
     }
     
-    .map-section, 
-    .contact-info-section {
-        width: 100%;
+    .map-section {
+        padding-top: 0;
     }
     
     .map-visual,
@@ -801,7 +786,6 @@ footer::before {
         min-height: 350px;
     }
     
-    /* Ajuste para steps en tablets */
     .process-steps {
         flex-wrap: wrap;
         justify-content: center;
@@ -899,10 +883,6 @@ footer::before {
         display: block;
     }
     
-    .contact-section {
-        padding: 40px 0;
-    }
-
     .contact-info-section {
         padding: 25px;
     }
@@ -918,16 +898,18 @@ footer::before {
 }
 
 @media (max-width: 576px) {
+    .logo img {
+        height: 50px;
+        width: auto;
+        display: block;
+        margin-top: 2%;
+    }
     .hero {
         height: 60vh;
     }
     
     .hero-content h1 {
         font-size: 2rem;
-    }
-    
-    .contact-section {
-        padding: 30px 0;
     }
     
     .contact-info-section {
@@ -976,11 +958,10 @@ footer::before {
     }
 
         .logo img {
-        height: 40px;
+        height: 50px;
         width: auto;
         display: block;
         margin-top: 2%;
     }
-
     }
 }

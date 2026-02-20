@@ -13,8 +13,7 @@
 
     <!-- Primary Meta Tags -->
     <meta name="title" content="MUKER" />
-    <meta name="description" content="Somos especialistas en crear muebles únicos que se adaptan a tus necesidades y espacios. Cada pieza es fabricada con madera de la más alta calidad.
-    " />
+    <meta name="description" content="Somos especialistas en crear muebles únicos que se adaptan a tus necesidades y espacios. Cada pieza es fabricada con madera de la más alta calidad." />
     <meta name="author" content="Alejandro" />
     <meta name="copyright" content="MUKER" />
     <!-- Icono del sitio -->
@@ -23,14 +22,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 <style>
-    /* ANIMACIONES - Con colores actualizados */
-    /* ===== SLIDER DE PRESENTACIÓN MUKER ===== */
+    /* ===== VARIABLES ===== */
+:root {
+    --color-primary: #b55c3a;     /* Terracota */
+    --color-secondary: #c78e3e;    /* Mostaza */
+    --color-accent: #7c774a;       /* Verde oliva */
+    --color-neutral: #F8F8F8;
+    --color-text: #333333;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== SLIDER DE PRESENTACIÓN ===== */
 .muker-slider-section {
     width: 100%;
-    height: 90vh;
+    height: 60vh;
     position: relative;
     overflow: hidden;
-    margin: 2rem 0;
+    margin: 1rem 0 2rem 0;
 }
 
 .slider-container {
@@ -70,8 +78,8 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, 
-        rgba(44, 44, 44, 0.8) 0%, 
-        rgba(181, 92, 58, 0.6) 100%);
+        rgba(44, 44, 44, 0.85) 0%, 
+        rgba(124, 119, 74, 0.65) 100%);
     z-index: 1;
 }
 
@@ -80,15 +88,15 @@
     z-index: 2;
     text-align: center;
     color: white;
-    max-width: 800px;
-    padding: 0 20px;
+    max-width: 700px;
+    padding: 0 15px;
     animation: slideContentIn 1s ease forwards;
 }
 
 @keyframes slideContentIn {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -100,242 +108,42 @@
     display: inline-block;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     color: white;
-    padding: 10px 30px;
+    padding: 6px 20px;
     border-radius: 50px;
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .slide-title {
-    font-size: 4rem;
+    font-size: 2.8rem;
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     font-weight: 700;
+    line-height: 1.2;
 }
 
 .slide-description {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+    font-size: 1rem;
+    margin-bottom: 20px;
     opacity: 0.95;
-    line-height: 1.8;
+    line-height: 1.6;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
-/* Stats para slide Nosotros */
-.slide-stats {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 35px;
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    display: block;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--color-secondary);
-    line-height: 1;
-    margin-bottom: 5px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-.stat-label {
-    font-size: 0.9rem;
-    opacity: 0.9;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Grid de productos para slide Líneas */
-.product-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 35px;
-}
-
-.product-mini {
-    text-align: center;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    padding: 15px 25px;
-    border-radius: 15px;
-    border: 1px solid rgba(255,255,255,0.2);
-    transition: all 0.3s ease;
-}
-
-.product-mini:hover {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    transform: translateY(-5px);
-}
-
-.product-mini i {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 8px;
-    color: white;
-}
-
-.product-mini span {
-    font-size: 0.9rem;
-    font-weight: 600;
-}
-
-/* Features para slide Proyectos */
-.project-features {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 25px;
-}
-
-.project-features span {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(5px);
-    padding: 8px 20px;
-    border-radius: 30px;
-    font-size: 0.95rem;
-    border: 1px solid rgba(255,255,255,0.2);
-}
-
-.project-features i {
-    color: var(--color-secondary);
-}
-
-/* ===== TARJETAS DE MUEBLES Y ACCESORIOS - MEJORADAS ===== */
-/* Respetando tu estructura original pero con mejor presencia visual */
-.card {
-  width: 450px;
-  height: 350px; /* Ligeramente más alto para mejor proporción */
-  border-radius: 20px; /* Más elegante */
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Sombra más pronunciada */
-  background-size: cover;
-  background-position: center;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Transición más suave */
-  cursor: pointer;
-}
-
-/* Efecto al pasar el mouse - más notorio */
-.card:hover {
-  transform: translateY(-15px) scale(1.02); /* Se eleva más y crece ligeramente */
-  box-shadow: 0 25px 40px rgba(181, 92, 58, 0.3); /* Sombra con color de marca */
-}
-
-/* Overlay con gradiente más suave y elegante */
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.2) 0%,
-        rgba(0,0,0,0.7) 100%
-    );
-    z-index: 1;
-    transition: all 0.3s ease;
-}
-
-.card:hover::before {
-    background: linear-gradient(
-        to bottom,
-        rgba(181, 92, 58, 0.3) 0%,
-        rgba(44, 44, 44, 0.8) 100%
-    );
-}
-
-.card-content {
-  z-index: 2;
-  position: relative;
-  transform: translateY(0);
-  transition: transform 0.4s ease;
-}
-
-.card:hover .card-content {
-    transform: translateY(-8px); /* El contenido se eleva ligeramente */
-}
-
-.title {
-  font-size: 3rem; /* Un poco más grande */
-  letter-spacing: 4px;
-  margin: 0;
-  font-weight: 700;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-  color: white;
-}
-
-.brand {
-  font-size: 1rem;
-  border-top: 2px solid rgba(255,255,255,0.5);
-  border-bottom: 2px solid rgba(255,255,255,0.5);
-  display: inline-block;
-  padding: 8px 20px;
-  margin: 15px 0;
-  letter-spacing: 2px;
-  font-weight: 300;
-}
-
-.subtitle {
-  font-size: 1.3rem;
-  font-weight: 300;
-  margin: 0;
-  opacity: 0.9;
-}
-
-/* Capas de color con degradado (manteniendo tus colores originales) */
-.muebles {
-  background-image: linear-gradient(
-    to bottom, 
-    rgba(45, 52, 54, 0.92) 0%, 
-    rgba(45, 52, 54, 0.6) 100%
-  ), url('./Imagenes/Index/muebles\ personalizados.png');
-}
-
-.accesorios {
-  background-image: linear-gradient(
-    to bottom, 
-    rgba(99, 50, 33, 0.92) 0%, 
-    rgba(99, 50, 33, 0.6) 100%
-  ), url('./Imagenes/Index/Accesorios.png');
-}
-
-/* Ajuste de brillo al pasar el mouse para que la imagen se vea un poco más */
-.card:hover {
-  filter: contrast(1.05);
-}
-
-/* Botón principal */
 .slide-button {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     color: white;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    padding: 15px 40px;
+    padding: 10px 28px;
     background: linear-gradient(135deg, var(--color-primary) 0%, #9e4f32 100%);
     border-radius: 50px;
     transition: all 0.3s ease;
@@ -344,6 +152,7 @@
 }
 
 .slide-button i {
+    font-size: 0.9rem;
     transition: transform 0.3s ease;
 }
 
@@ -355,22 +164,21 @@
 }
 
 .slide-button:hover i {
-    transform: translateX(8px);
+    transform: translateX(5px);
 }
 
-/* Flechas de navegación */
 .slider-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.3);
     border-radius: 50%;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -384,31 +192,29 @@
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     border-color: transparent;
     transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 8px 25px rgba(181, 92, 58, 0.4);
 }
 
 .slider-arrow.prev {
-    left: 30px;
+    left: 20px;
 }
 
 .slider-arrow.next {
-    right: 30px;
+    right: 20px;
 }
 
-/* Dots indicadores */
 .slider-dots {
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 15px;
+    gap: 10px;
     z-index: 10;
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     background: rgba(255,255,255,0.5);
     border-radius: 50%;
     cursor: pointer;
@@ -418,11 +224,10 @@
 
 .dot.active {
     background: white;
-    transform: scale(1.3);
-    width: 40px;
-    border-radius: 20px;
+    width: 30px;
+    border-radius: 15px;
     box-shadow: 0 0 15px rgba(255,255,255,0.5);
-    border-color: var(--color-primary);
+    border-color: var(--color-accent);
 }
 
 .dot:hover {
@@ -430,13 +235,12 @@
     transform: scale(1.1);
 }
 
-/* Barra de progreso */
 .slider-progress {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 4px;
+    height: 3px;
     background: rgba(255,255,255,0.2);
     z-index: 10;
 }
@@ -448,309 +252,466 @@
     transition: width 0.3s linear;
 }
 
-/* Responsive */
-@media (max-width: 992px) {
-    .muker-slider-section {
-        height: 80vh;
-    }
-    
-    .slide-title {
-        font-size: 3rem;
-    }
-    
-    .slide-description {
-        font-size: 1.1rem;
-    }
-    
-    .slider-arrow {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-    }
-    
-    .card {
-        width: 400px;
-        height: 320px;
-    }
+/* ===== TARJETAS ===== */
+.card {
+    width: 450px;
+    height: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
 }
 
-@media (max-width: 768px) {
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(124, 119, 74, 0.3) 0%,
+        rgba(44, 44, 44, 0.8) 100%
+    );
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.card:hover::before {
+    background: linear-gradient(
+        to bottom,
+        rgba(181, 92, 58, 0.4) 0%,
+        rgba(124, 119, 74, 0.8) 100%
+    );
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 40px rgba(124, 119, 74, 0.4);
+}
+
+.card-content {
+    z-index: 2;
+    position: relative;
+    transform: translateY(0);
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-content {
+    transform: translateY(-5px);
+}
+
+.title {
+    font-size: 2.8rem;
+    letter-spacing: 3px;
+    margin: 0;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    color: white;
+}
+
+.brand {
+    font-size: 0.9rem;
+    border-top: 2px solid var(--color-secondary);
+    border-bottom: 2px solid var(--color-secondary);
+    display: inline-block;
+    padding: 5px 15px;
+    margin: 10px 0;
+    letter-spacing: 2px;
+    font-weight: 300;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.muebles {
+    background-image: linear-gradient(
+        to bottom, 
+        rgba(45, 52, 54, 0.92) 0%, 
+        rgba(45, 52, 54, 0.6) 100%
+    ), url('Imagenes/Index/muebles personalizados.png');
+}
+
+.accesorios {
+    background-image: linear-gradient(
+        to bottom, 
+        rgba(99, 50, 33, 0.92) 0%, 
+        rgba(99, 50, 33, 0.6) 100%
+    ), url('Imagenes/Index/Accesorios.png');
+}
+
+/* ===== BOTÓN LEER MÁS ===== */
+.btn-readmore {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 40px;
+    padding: 10px 35px;
+    background: linear-gradient(135deg, var(--color-accent) 0%, #5a5536 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(124, 119, 74, 0.3);
+}
+
+.btn-readmore:hover {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(124, 119, 74, 0.5);
+}
+
+/* ===== SECCIÓN INTRO (solo lo que no está en styles.css) ===== */
+.intro-section {
+    background-color: var(--color-neutral);
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
+.intro-section:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 0% 0%, var(--color-accent) 0%, transparent 70%);
+    opacity: 0.08;
+    z-index: 0;
+}
+
+.intro-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.intro-text h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-accent);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.intro-text h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    border-radius: 2px;
+}
+
+.intro-text p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+.intro-features {
+    list-style: none;
+    margin: 1.5rem 0;
+}
+
+.intro-features li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.95rem;
+}
+
+.intro-features i {
+    color: var(--color-accent);
+    font-size: 1.1rem;
+    margin-top: 3px;
+}
+
+.intro-image {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    transition: transform 0.5s;
+    border: 3px solid var(--color-accent);
+}
+
+.intro-image:hover {
+    transform: scale(1.03);
+    border-color: var(--color-primary);
+}
+
+.intro-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== ANIMACIONES ===== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.process-steps .step {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.process-steps .step.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.step:nth-child(1) { transition-delay: 0.1s; }
+.step:nth-child(2) { transition-delay: 0.2s; }
+.step:nth-child(3) { transition-delay: 0.3s; }
+.step:nth-child(4) { transition-delay: 0.4s; }
+
+/* ===== RESPONSIVE DEL SLIDER Y TARJETAS ===== */
+@media (max-width: 992px) {
     .muker-slider-section {
-        height: 100vh;
+        height: 50vh;
     }
     
     .slide-title {
         font-size: 2.2rem;
     }
     
-    .slide-description {
-        font-size: 1rem;
+    .intro-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
     
-    .slide-stats {
-        gap: 20px;
-        flex-wrap: wrap;
-    }
-    
-    .stat-number {
-        font-size: 2rem;
-    }
-    
-    .product-grid {
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-    
-    .product-mini {
-        padding: 12px 20px;
-    }
-    
-    .project-features {
-        flex-wrap: wrap;
-    }
-    
-    .slider-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-    }
-    
-    .slider-arrow.prev {
-        left: 15px;
-    }
-    
-    .slider-arrow.next {
-        right: 15px;
-    }
-    
-    .card-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .card {
-        width: 100%;
-        max-width: 450px;
+    .intro-image {
+        order: -1;
     }
 }
 
-@media (max-width: 576px) {
-    .slide-tag {
-        font-size: 0.8rem;
-        padding: 8px 20px;
+@media (max-width: 768px) {
+    .muker-slider-section {
+        height: 45vh;
     }
     
     .slide-title {
         font-size: 1.8rem;
     }
     
+    .slide-tag {
+        font-size: 0.75rem;
+        padding: 4px 15px;
+    }
+    
     .slide-button {
-        padding: 12px 30px;
+        padding: 8px 20px;
+        font-size: 0.85rem;
+    }
+    
+    .card-container {
+        gap: 20px !important;
+    }
+    
+    .card {
+        width: 100%;
+        max-width: 400px;
+        height: 300px;
+    }
+    
+    .title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .muker-slider-section {
+        height: 40vh;
+    }
+    
+    .slide-title {
+        font-size: 1.4rem;
+    }
+    
+    .slide-description {
+        font-size: 0.85rem;
+        margin-bottom: 15px;
+    }
+    
+    .slider-arrow {
+        width: 35px;
+        height: 35px;
         font-size: 1rem;
     }
     
-    .project-gallery img {
-        width: 50px;
-        height: 50px;
+    .slider-arrow.prev {
+        left: 10px;
     }
     
-    .slider-dots {
-        bottom: 20px;
+    .slider-arrow.next {
+        right: 10px;
     }
 }
-    /* Animación de entrada para elementos */
-    .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    /* Animación para tarjetas al hacer hover */
-    .category-card, .step {
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-    
-    .category-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(181, 92, 58, 0.15); /* Sombra terracota */
-    }
-
-    /* Animación para iconos */
-    .step-icon, .contact-icon, .social-icons a {
-        transition: all 0.3s ease;
-    }
-    
-    .step:hover .step-icon {
-        transform: scale(1.1) rotate(5deg);
-    }
-     
-    /* Animación de carga para imágenes */
-    .intro-image img, .category-img {
-        transition: transform 0.5s ease, opacity 0.5s ease;
-    }
-    
-    .intro-image:hover img {
-        transform: scale(1.03);
-    }
-
-    /* Animación para elementos del proceso */
-    .process-steps .step {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.2s ease;
-    }
-    
-    .process-steps .step.animated {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    /* Retrasos escalonados para animaciones */
-    .step:nth-child(1) { transition-delay: 0.1s; }
-    .step:nth-child(2) { transition-delay: 0.2s; }
-    .step:nth-child(3) { transition-delay: 0.3s; }
-    .step:nth-child(4) { transition-delay: 0.4s; }
-    
-    /* Animación para el header al hacer scroll (opcional) */
-    header {
-        transition: all 0.3s ease;
-    }
-    
-    header.scrolled {
-        box-shadow: 0 4px 20px rgba(181, 92, 58, 0.2);
-    }
 </style>
 </head>
 <body>
 <div id="header-container"></div>
-    <!-- Hero Section -->
-<!-- Slider de Presentación MUKER -->
-<!-- Slider de Presentación MUKER -->
-<section class="muker-slider-section">
-<div class="slider-container">
-    <div class="slider-track">
-        <!-- SLIDE 1: Nuestras líneas -->
-        <div class="slider-slide">
-            <div class="slide-background" style="background-image: url('Imagenes/Index/Introduction-image.jpg');">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <span class="slide-tag">Nuestras líneas</span>
-                    <h2 class="slide-title">Diseños personalizados en madera</h2>
-                    <a href="Productos.html" class="slide-button">
-                        Explorar Lineas <i class="fas fa-arrow-right"></i>
-                    </a>
+
+    <!-- SLIDER DE PRESENTACIÓN -->
+    <section class="muker-slider-section">
+        <div class="slider-container">
+            <div class="slider-track">
+                <!-- SLIDE 1: Nuestras líneas -->
+                <div class="slider-slide">
+                    <div class="slide-background" style="background-image: url('Imagenes/Index/Introduction-image.jpg');">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <span class="slide-tag">Nuestras líneas</span>
+                            <h2 class="slide-title">Diseños personalizados en madera</h2>
+                            <a href="Productos.html" class="slide-button">
+                                Explorar Líneas <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- SLIDE 2: Nosotros -->
+                <div class="slider-slide">
+                    <div class="slide-background" style="background-image: url('Imagenes/Nosotros/hero-nosotros.png');">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <span class="slide-tag">Nosotros</span>
+                            <h2 class="slide-title">Nuestra Historia</h2>
+                            <p class="slide-description">
+                                Conoce el corazón y el alma detrás de cada pieza.
+                            </p>
+                            <a href="Nosotros.html" class="slide-button">
+                                Conocer más <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 3: Proyectos Destacados -->
+                <div class="slider-slide">
+                    <div class="slide-background" style="background-image: url('Imagenes/Proyectos/hero-proyectos.png');">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <span class="slide-tag">Proyecto destacado</span>
+                            <h2 class="slide-title">Proyectos que inspiran</h2>
+                            <p class="slide-description">
+                                Transformamos espacios con diseños únicos.
+                            </p>
+                            <a href="Proyectos.html" class="slide-button">
+                                Ver proyectos <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SLIDE 4: Cotización -->
+                <div class="slider-slide">
+                    <div class="slide-background" style="background-image: url('Imagenes/Proceso/hero-proceso.jpg');">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <span class="slide-tag">Cotización</span>
+                            <h2 class="slide-title">Solicita tu cotización</h2>
+                            <p class="slide-description">
+                                Personalizada y sin compromiso
+                            </p>
+                            <a href="proceso.html" class="slide-button">
+                                Solicitar <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+            <!-- Controles del slider -->
+            <button class="slider-arrow prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-arrow next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- Indicadores -->
+            <div class="slider-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+
+            <!-- Progreso del slider -->
+            <div class="slider-progress">
+                <div class="progress-bar"></div>
             </div>
         </div>
-
-        <!-- SLIDE 2: Nosotros -->
-        <div class="slider-slide">
-            <div class="slide-background" style="background-image: url('Imagenes/Nosotros/hero-nosotros.png');">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <span class="slide-tag">Nosotros</span>
-                    <h2 class="slide-title">Nuestra Historia</h2>
-                    <p class="slide-description">
-                        Conoce el corazón y el alma detrás de cada pieza que creamos.
-                    </p>
-                    <a href="Nosotros.html" class="slide-button">
-                        Conocer nuestra historia <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 3: Proyectos Destacados -->
-        <div class="slider-slide">
-            <div class="slide-background" style="background-image: url('Imagenes/Proyectos/hero-proyectos.png');">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <span class="slide-tag">Proyecto destacado</span>
-                    <h2 class="slide-title">Nuestros proyectos destacados</h2>
-                    <p class="slide-description">
-                        Descubre cómo transformamos espacios con muebles personalizados de alta calidad.
-                    </p>
-                    <a href="Proyectos.html" class="slide-button">
-                        Ver todos los proyectos <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 4: Cotización (DENTRO del slider-track) -->
-        <div class="slider-slide">
-            <div class="slide-background" style="background-image: url('Imagenes/Proceso/hero-proceso.jpg');">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <span class="slide-tag">Cotización</span>
-                    <h2 class="slide-title">Solicita tu cotización personalizada</h2>
-                    <a href="proceso.html" class="slide-button">
-                        Solicitar cotización <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div> 
-    <!-- Controles del slider -->
-    <button class="slider-arrow prev">
-        <i class="fas fa-chevron-left"></i>
-    </button>
-    <button class="slider-arrow next">
-        <i class="fas fa-chevron-right"></i>
-    </button>
-
-    <!-- Indicadores -->
-    <div class="slider-dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-    </div>
-
-    <!-- Progreso del slider -->
-    <div class="slider-progress">
-        <div class="progress-bar"></div>
-    </div>
-</div>
-</section>
+    </section>
 
     <!-- Sección Introducción -->
     <section class="section intro-section" id="nosotros">
         <div class="container">
             <div class="intro-content">
                 <div class="intro-text fade-in">
-                    <h2>¿Quienes somos?</h2>
-                    <p>Somos especialistas en crear muebles únicos, pensando en tus necesidades y espacios. Cada pieza es fabricada con madera de la más alta calidad y con un diseño duradero. La pasión por la carpintería se refleja en cada detalle de los productos.</p>
+                    <h2>¿Quiénes somos?</h2>
+                    <p>Somos especialistas en crear muebles únicos, pensando en tus necesidades y espacios. Cada pieza es fabricada con madera de la más alta calidad y con un diseño duradero. La pasión por la carpintería se refleja en cada detalle.</p>
                     
-                    <p>Nuestra filosofía se basa en tres pilares fundamentales: </p>
+                    <p>Nuestra filosofía se basa en tres pilares fundamentales:</p>
                     
                     <ul class="intro-features">
-                        <li><i class="fas fa-check-circle"></i> Materiales premium seleccionados por su durabilidad, belleza y calidad.</li>
+                        <li><i class="fas fa-check-circle"></i> Materiales premium seleccionados por su durabilidad y belleza.</li>
                         <li><i class="fas fa-check-circle"></i> Procesos sostenibles que respetan el medio ambiente.</li>
-                        <li><i class="fas fa-check-circle"></i> Garantía de satisfacción en cada proyecto realizado asegurando que cada pieza no solo sea hermosa, sino de acuerdo a tu gusto y a tus necesidades.</li>
+                        <li><i class="fas fa-check-circle"></i> Garantía de satisfacción en cada proyecto realizado.</li>
                     </ul>
                     
-                    <p>Desde la creación del diseño hasta el acabado final, cada etapa del proceso es supervisada por nuestros expertos, garantizando que el resultado final supere sus expectativas y se convierta en tu absoluto agrado.</p>
+                    <p>Cada etapa del proceso es supervisada por nuestros expertos, garantizando que el resultado final supere tus expectativas.</p>
+                    
+                    <a href="Nosotros.html" class="btn-readmore fade-in">Leer más...</a>
                 </div>
                 <div class="intro-image fade-in">
-                    <img src="Imagenes/Index/Introduction-image.jpg" alt="Gabinete">
+                    <img src="Imagenes/Index/Introduction-image.jpg" alt="Mueble MUKER">
                 </div>
             </div>
         </div>
     </section>
-    <a href="Nosotros.html" class="btn btn-readmore fade-in">Leer mas...</a>
 
-    <!-- Categorías principales - Versión mejorada visualmente pero respetando tu estructura -->
+    <!-- Categorías principales -->
     <section class="section">
-        <div class="card-container" style="display: flex; justify-content: center; gap: 230px; padding: 20px; max-width: 1200px; margin: 0 auto; flex-wrap: wrap;">
+        <div class="card-container" style="display: flex; justify-content: center; gap: 200px; padding: 20px; max-width: 1200px; margin: 0 auto; flex-wrap: wrap;">
             <a href="Productos.html" class="card muebles">
                 <div class="card-content">
-                    <h2 class="title">NUESTRAS LINEAS</h2>
+                    <h2 class="title">NUESTRAS LÍNEAS</h2>
                     <div class="brand">by MUKER</div>
                     <p class="subtitle">Diseños personalizados</p>
                 </div>
@@ -766,7 +727,7 @@
         </div>
     </section>
 
-   <!-- Proceso simplificado -->
+    <!-- Proceso -->
     <section class="process">
         <div class="container">
             <div class="section-title fade-in">
@@ -775,28 +736,29 @@
             <div class="process-steps">
                 <div class="step">
                     <div class="step-icon"><i class="fa-solid fa-ruler"></i></div>
-                    <h3>Medidas </h3>
+                    <h3>Medidas</h3>
                     <p>Tomamos las medidas preliminares de tu espacio.</p>
                 </div>
                 <div class="step">
                     <div class="step-icon"><i class="fa-solid fa-pencil"></i></div>
                     <h3>Diseñar</h3>
-                    <p>Creamos un diseño personalizado que se adapte a tu estilo y necesidades.</p>
+                    <p>Creamos un diseño personalizado a tu estilo.</p>
                 </div>
                 <div class="step">
                     <div class="step-icon"><i class="fa-solid fa-hammer"></i></div>
                     <h3>Fabricar</h3>
-                    <p>Elaboramos tu mueble con materiales de primera calidad y atención al detalle.</p>
+                    <p>Elaboramos tu mueble con materiales de primera calidad.</p>
                 </div>
                 <div class="step">
                     <div class="step-icon"><i class="fa-solid fa-truck"></i></div>
                     <h3>Entregar</h3>
-                    <p>Instalamos tu mueble y nos aseguramos de que quedes completamente satisfecho.</p>
+                    <p>Instalamos tu mueble y te aseguras de quedar satisfecho.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Sección: Dónde Estamos -->
     <!-- Sección: En Dónde Estamos -->
     <section class="contact-section" id="contacto">
         <div class="container">
@@ -827,33 +789,33 @@
                                     <p>Circuito Emprendedores No. 19, Parque Industrial Metropolitano, Mineral de la Reforma, Hgo. CP 42186</p>
                                 </div>
                             </div>
-                            <div class="contact-container">
+                            
                             <div class="contact-item">
                                 <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
+                                    <i class="fas fa-phone"></i>
                                 </div>
                                 <div class="contact-text">
-                                <h4>Teléfonos</h4>
-                                <p>
-                                    <a href="tel:+527717132513">771 713 2513</a><br>
-                                    <a href="tel:+527717132514">771 713 2514</a><br>
-                                    <a href="tel:+527717181044">771 718 1044</a>
-                                </p>
+                                    <h4>Teléfonos</h4>
+                                    <p>
+                                        <a href="tel:+527717132513">771 713 2513</a><br>
+                                        <a href="tel:+527717132514">771 713 2514</a><br>
+                                        <a href="tel:+527717181044">771 718 1044</a>
+                                    </p>
                                 </div>
                             </div>
 
                             <div class="contact-item whatsapp-item">
                                 <div class="contact-icon contact-whatsapp-icon">
-                                <i class="fab fa-whatsapp"></i>
+                                    <i class="fab fa-whatsapp"></i>
                                 </div>
-                                <div class="contact-whatsapp">
-                                <h4>WhatsApp</h4>
-                                <p>
-                                    <a href="https://wa.me/52771712167150" target="_blank">771 712 167 150</a>
-                                </p>
+                                <div class="contact-text">
+                                    <h4>WhatsApp</h4>
+                                    <p>
+                                        <a href="https://wa.me/52771712167150" target="_blank">771 712 167 150</a>
+                                    </p>
                                 </div>
                             </div>
-                            </div>
+
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <i class="fas fa-envelope"></i>
@@ -863,6 +825,7 @@
                                     <p><a href="mailto:ventas@hidrosistemas.com.mx">ventas@hidrosistemas.com.mx</a></p>
                                 </div>
                             </div>
+                            
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <i class="fas fa-clock"></i>
@@ -880,83 +843,143 @@
         </div>
     </section>
 
-    <button class="btn-scroll-top" aria-label="Volver arriba">
+    <button class="btn-scroll-top" id="btnScrollTop" aria-label="Volver arriba">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M12 4l-8 8h5v8h6v-8h5z"/>
         </svg>
     </button>
 
-<div id="footer-container"></div>
-    
-    <!-- Bootstrap JavaScript Libraries -->
-    <script
-        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"
-    ></script>
+    <div id="footer-container"></div>
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"
-    ></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 
-        <script>   
-
-            // Animación de elementos al hacer scroll
-            const fadeElements = document.querySelectorAll('.fade-in');
-            const steps = document.querySelectorAll('.process-steps .step');
-            const mapVisual = document.querySelector('.map-visual');
-            const contactInfo = document.querySelector('.contact-info-section');
-            
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        
-                        // Animación escalonada para los pasos del proceso
-                        if (entry.target.classList.contains('process-steps')) {
-                            steps.forEach((step, index) => {
-                                setTimeout(() => {
-                                    step.classList.add('animated');
-                                }, index * 200);
-                            });
-                        }
-                        
-                        // Animación para el mapa y la información de contacto
-                        if (entry.target.classList.contains('contact-content')) {
+    <script>
+        // Animación de elementos al hacer scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const steps = document.querySelectorAll('.process-steps .step');
+        const mapVisual = document.querySelector('.map-visual');
+        const contactInfo = document.querySelector('.contact-info-section');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    if (entry.target.classList.contains('process-steps')) {
+                        steps.forEach((step, index) => {
                             setTimeout(() => {
-                                if (mapVisual) mapVisual.classList.add('animated');
-                            }, 300);
-                            
-                            setTimeout(() => {
-                                if (contactInfo) contactInfo.classList.add('animated');
-                            }, 600);
-                        }
+                                step.classList.add('animated');
+                            }, index * 200);
+                        });
                     }
-                });
-            }, observerOptions);
-            
-            // Observar elementos para animaciones
-            fadeElements.forEach(el => observer.observe(el));
-            document.querySelector('.process-steps') && observer.observe(document.querySelector('.process-steps'));
-            document.querySelector('.contact-content') && observer.observe(document.querySelector('.contact-content'));
-            
-            // Activar animaciones para elementos ya visibles al cargar
-            setTimeout(() => {
-                fadeElements.forEach(el => {
-                    const rect = el.getBoundingClientRect();
-                    if (rect.top < window.innerHeight && rect.bottom >= 0) {
-                        el.classList.add('visible');
+                    
+                    if (entry.target.classList.contains('contact-content')) {
+                        setTimeout(() => {
+                            if (mapVisual) mapVisual.classList.add('animated');
+                        }, 300);
+                        
+                        setTimeout(() => {
+                            if (contactInfo) contactInfo.classList.add('animated');
+                        }, 600);
                     }
+                }
+            });
+        }, observerOptions);
+        
+        fadeElements.forEach(el => observer.observe(el));
+        document.querySelector('.process-steps') && observer.observe(document.querySelector('.process-steps'));
+        document.querySelector('.contact-content') && observer.observe(document.querySelector('.contact-content'));
+        
+        // Activar animaciones para elementos ya visibles al cargar
+        setTimeout(() => {
+            fadeElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    el.classList.add('visible');
+                }
+            });
+        }, 100);
+
+        // Slider functionality
+        const track = document.querySelector('.slider-track');
+        const slides = document.querySelectorAll('.slider-slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.querySelector('.slider-arrow.prev');
+        const nextBtn = document.querySelector('.slider-arrow.next');
+        const progressBar = document.querySelector('.progress-bar');
+        let currentIndex = 0;
+        let slideInterval;
+
+        function updateSlider(index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            currentIndex = index;
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+            
+            if (progressBar) {
+                progressBar.style.width = `${((currentIndex + 1) / slides.length) * 100}%`;
+            }
+        }
+
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                updateSlider(currentIndex - 1);
+                resetInterval();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                updateSlider(currentIndex + 1);
+                resetInterval();
+            });
+            
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    updateSlider(i);
+                    resetInterval();
                 });
-            }, 100);
-        </script>
+            });
+            
+            // Auto-play
+            function startInterval() {
+                slideInterval = setInterval(() => {
+                    updateSlider(currentIndex + 1);
+                }, 5000);
+            }
+            
+            function resetInterval() {
+                clearInterval(slideInterval);
+                startInterval();
+            }
+            
+            startInterval();
+        }
+
+        // Botón scroll top
+        const scrollBtn = document.getElementById('btnScrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
     <script src="./js/components.js"></script>
 </body>
 </html>
