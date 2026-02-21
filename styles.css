@@ -30,7 +30,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Open Sans', serif;
     margin-bottom: 1rem;
-    color: var(--color-primary);
+    color: var(--color-secondary);
 }
 
 
@@ -280,7 +280,7 @@ padding-bottom: 10px;
 }
 
 .intro-features i {
-    color: var(--color-primary);
+    color: var(--color-accent);
     margin-right: 10px;
     margin-top: 5px;
     font-size: 1.2rem;
@@ -316,7 +316,7 @@ padding-bottom: 10px;
 }
 
 .section-title h2 {
-    color: var(--color-primary);
+    color: var(--color-secondary);
     position: relative;
     display: inline-block;
     padding-bottom: 10px;
@@ -372,6 +372,7 @@ padding-bottom: 10px;
 .category-content p {
     padding-bottom: 10px;
 }
+
 .process {
     background: linear-gradient(135deg, var(--color-accent) 0%, #5a5536 100%); /* CAMBIADO A VERDE OLIVA */
     padding: 3rem 0;
@@ -403,6 +404,43 @@ padding-bottom: 10px;
     flex-wrap: nowrap;
     gap: 1rem;
     width: 100%;
+}
+
+/* ===== UNIFICAR TAMAÑO DE TARJETAS DE PROCESO ===== */
+.process .step {
+    max-width: 280px;
+    height: 280px; /* Altura fija */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5rem 0.5rem;
+}
+
+.process .step h3 {
+    margin: 0.5rem 0;
+    min-height: 3rem; /* Altura mínima para títulos */
+}
+
+.process .step p {
+    min-height: 4rem; /* Altura mínima para textos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .process .step,
+    .info-item {
+        height: 260px; /* Un poco más pequeño en móviles */
+    }
+}
+
+@media (max-width: 576px) {
+    .process .step,
+    .info-item {
+        height: auto; /* Que se ajuste al contenido */
+        min-height: 250px;
+    }
 }
 
 /* Ajuste para tablets */
@@ -571,10 +609,10 @@ padding-bottom: 10px;
 
 .contact-info-section h3 {
     font-size: 1.8rem;
-    color: var(--color-primary);
+    color: var(--color-secondary);
     margin-bottom: 25px;
     padding-bottom: 12px;
-    border-bottom: 3px solid var(--color-secondary);
+    border-bottom: 3px solid var(--color-accent);
 }
 
 .contact-details {
@@ -623,7 +661,7 @@ padding-bottom: 10px;
 
 .contact-text h4 {
     font-size: 1.2rem;
-    color: var(--color-primary);
+    color: var(--color-secondary);
     margin: 0 0 5px 0;
     font-weight: 600;
 }

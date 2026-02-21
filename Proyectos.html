@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="PRACTIK-BOX — Diseños personalizados en madera" />
-    <meta name="description" content="Somos especialistas en crear muebles únicos que se adaptan a tus necesidades y espacios. Cada pieza es fabricada con madera de la más alta calidad.
-    " />
+    <meta name="description" content="Somos especialistas en crear muebles únicos que se adaptan a tus necesidades y espacios. Cada pieza es fabricada con madera de la más alta calidad." />
     <meta name="author" content="A Regular Page by EduardoPP & AlejandroSC">
     <meta name="robots" content="index, follow">
     <meta name="copyright" content="PRACTIK-BOX" />
@@ -15,6 +14,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="Imagenes/Index/icon.png" type="image/png">
     <style>
+        /* ===== TUS ESTILOS ORIGINALES ===== */
+        
         /* Hero Section para Proyectos */
         .hero-proyectos {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Imagenes/Proyectos/hero-proyectos.png');
@@ -58,7 +59,7 @@
             position: absolute;
             width: 80px;
             height: 3px;
-            background-color: var(--color-primary);
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
@@ -76,17 +77,42 @@
         .filtro-btn {
             padding: 0.8rem 1.5rem;
             background: white;
-            border: 2px solid var(--color-btn);
+            border: 2px solid var(--color-accent);
             border-radius: 30px;
-            color: var(--color-btn);
+            color: var(--color-accent);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
         
         .filtro-btn.active, .filtro-btn:hover {
-            background: var(--color-btn);
+            background: var(--color-accent);
             color: white;
+            border-color: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(124, 119, 74, 0.3);
+        }
+        
+        .filtro-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .filtro-btn:hover::before {
+            left: 100%;
+        }
+        
+        .filtro-btn.active {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         /* Grid de proyectos */
@@ -98,14 +124,17 @@
         
         .proyecto-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(124, 119, 74, 0.1);
         }
         
         .proyecto-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(124, 119, 74, 0.2);
+            border-color: var(--color-accent);
         }
         
         .proyecto-img {
@@ -129,12 +158,19 @@
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: var(--color-btn);
+            background: var(--color-accent);
             color: white;
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .proyecto-card:hover .proyecto-badge {
+            background: var(--color-secondary);
+            transform: scale(1.1) rotate(2deg);
         }
         
         .proyecto-content {
@@ -144,6 +180,7 @@
         .proyecto-content h3 {
             margin-bottom: 0.5rem;
             font-size: 1.3rem;
+            color: var(--color-primary);
         }
         
         .proyecto-meta {
@@ -157,6 +194,7 @@
         .proyecto-desc {
             margin-bottom: 1.5rem;
             line-height: 1.6;
+            color: #555;
         }
         
         .proyecto-detalles {
@@ -164,7 +202,7 @@
             justify-content: space-between;
             margin-top: 1rem;
             padding-top: 1rem;
-            border-top: 1px solid #eee;
+            border-top: 1px solid rgba(124, 119, 74, 0.2);
         }
         
         .proyecto-desc{
@@ -177,27 +215,58 @@
         
         .detalle-item i {
             font-size: 1.5rem;
-            color: var(--color-icon);
+            color: var(--color-secondary);
             margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .proyecto-card:hover .detalle-item i {
+            transform: scale(1.2);
+            color: var(--color-primary);
         }
     
         /* Llamada a la acción */
         .cta-proyectos {
-            background: white;
+            background: linear-gradient(135deg, var(--color-accent) 0%, #5a5536 100%);
             padding: 4rem 2rem;
             text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(124, 119, 74, 0.3);
             margin-top: 3rem;
+            color: white;
+        }
+
+        .cta-proyectos h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
         .cta-proyectos p{
             padding-bottom: 20px;
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
-                 
+        
         .btn-large {
             padding: 1rem 2rem;
             font-size: 1.1rem;
+            background: white;
+            color: var(--color-accent);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-large:hover {
+            background: var(--color-secondary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
 
         /* ANIMACIONES */
@@ -238,15 +307,16 @@
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 0;
             height: 3px;
-            background: var(--color-primary);
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
             transition: width 0.8s ease;
         }
         
         .section-title.animated h2::after {
-            width: 100%;
+            width: 80px;
         }
         
         /* Animación para botones de filtro */
@@ -256,24 +326,9 @@
             overflow: hidden;
         }
         
-        .filtro-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-        
-        .filtro-btn:hover::before {
-            left: 100%;
-        }
-        
         .filtro-btn.active {
             transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(124, 119, 74, 0.3);
         }
         
         /* Animación para tarjetas de proyectos */
@@ -286,31 +341,6 @@
         .proyecto-card.animated {
             opacity: 1;
             transform: translateY(0) scale(1);
-        }
-        
-        .proyecto-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        /* Animación para badges de proyectos */
-        .proyecto-badge {
-            transition: all 0.3s ease;
-        }
-        
-        .proyecto-card:hover .proyecto-badge {
-            transform: scale(1.1) rotate(5deg);
-            background: var(--color-primary);
-        }
-        
-        /* Animación para iconos de detalles */
-        .detalle-item i {
-            transition: all 0.3s ease;
-        }
-        
-        .proyecto-card:hover .detalle-item i {
-            transform: scale(1.2);
-            color: var(--color-primary);
         }
         
         /* Animación para imágenes de proyectos */
@@ -329,7 +359,7 @@
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(255, 255, 255, 0.4),
+                rgba(255, 255, 255, 0.3),
                 transparent
             );
             transition: left 0.8s ease;
@@ -354,7 +384,7 @@
         
         .cta-proyectos:hover {
             transform: scale(1.02);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 35px rgba(124, 119, 74, 0.4);
         }
         
         /* Animación de filtrado de proyectos */
@@ -373,26 +403,94 @@
             transform: scale(1) translateY(0);
         }
 
+        /* ===== LÍNEA DECORATIVA DEL HEADER ===== */
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-secondary) 0%, #e5a047 100%);
+            box-shadow: 0 2px 10px rgba(199, 142, 62, 0.5);
+            z-index: 1001;
+        }
+
+        header {
+            position: relative !important;
+        }
+
+        /* ===== BOTÓN SCROLL TOP ===== */
+        .btn-scroll-top {
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+            box-shadow: 0 4px 20px rgba(124, 119, 74, 0.3);
+        }
+
+        .btn-scroll-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(124, 119, 74, 0.5);
+        }
+
+        /* ===== CONTACTO ===== */
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+        }
+
+        .whatsapp-item .contact-icon {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        }
+
+        .whatsapp-item:hover .contact-icon {
+            background: linear-gradient(135deg, var(--color-secondary) 0%, #25D366 100%);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .proyectos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-proyectos h1 {
+                font-size: 2.5rem;
+            }
+            
+            .proyectos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filtros-proyectos {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filtro-btn {
+                width: 80%;
+            }
+        }
+
         @media (max-width: 400px){
             .proyecto-card{
-                margin-right: 30px;
+                margin-right: 0;
             }
         }
 
         @media (max-width: 330px){
             .hero-proyectos h1 {
-                font-size: 1.5rem;
-                margin-bottom: 1rem;
+                font-size: 1.8rem;
             }
-
+            
             .proyecto-card {
-                width: 280px;
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
      <div id="header-container"></div>
+     
     <!-- Hero Section para Proyectos -->
     <section class="hero-proyectos">
         <div class="container">
@@ -407,7 +505,7 @@
     <section class="section">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>Portafolio de proyectos.</h2>
+                <h2>Portafolio de proyectos</h2>
                 <p>Una selección de nuestros trabajos más representativos.</p>
             </div>
             
@@ -428,20 +526,20 @@
                         <span class="proyecto-badge">Residencial</span>
                     </div>
                     <div class="proyecto-content">
-                        <h3>Cocina Moderna con acabados en Madera Clara</h3>
-                        <p class="proyecto-desc">Cocina moderna y funcional con gabinetes empotrados en acabado de madera clara, que aportan calidez y elegancia al espacio. Ideal para quienes buscan practicidad sin sacrificar estilo.</p>
+                        <h3>Cocina Moderna</h3>
+                        <p class="proyecto-desc">Cocina moderna y funcional con gabinetes empotrados en acabado de madera clara, que aportan calidez y elegancia al espacio.</p>
                     </div>
                 </div>
                 
-                <!-- Proyecto 2 - Comercial -->
+                <!-- Proyecto 2 - Residencial -->
                 <div class="proyecto-card" data-categoria="residencial">
                     <div class="proyecto-img">
                         <img src="Imagenes/Proyectos/Proyecto 2.jpg" alt="Closet">
                         <span class="proyecto-badge">Residencial</span>
                     </div>
                     <div class="proyecto-content">
-                        <h3>Closet Empotrado Moderno con acabados en Blanco y Negro</h3>
-                        <p class="proyecto-desc">Espacio de almacenamiento optimizado con sistema modular que combina estantes abiertos, barras colgantes y compartimentos profundos para ropa y accesorios. Ideal para organizar prendas, calzado y objetos personales con estilo y funcionalidad.</p>
+                        <h3>Closet Empotrado</h3>
+                        <p class="proyecto-desc">Espacio de almacenamiento optimizado con sistema modular que combina estantes abiertos, barras colgantes y compartimentos profundos.</p>
                     </div>
                 </div>
                 
@@ -452,8 +550,8 @@
                         <span class="proyecto-badge">Comercial</span>
                     </div>
                     <div class="proyecto-content">
-                        <h3>Salón de Belleza con Diseño Premium</h3>
-                        <p class="proyecto-desc">Espacio pensado para la elegancia y la comodidad, ideal para que los clientes se sientan cómodos desde el primer momento. Ideal para salones de belleza que buscan ofrecer no solo servicios de calidad, sino también una experiencia visual y sensorial inolvidable.</p>
+                        <h3>Salón de Belleza</h3>
+                        <p class="proyecto-desc">Espacio pensado para la elegancia y la comodidad, ideal para que los clientes se sientan cómodos desde el primer momento.</p>
                     </div>
                 </div>
 
@@ -465,7 +563,7 @@
                     </div>
                     <div class="proyecto-content">
                         <h3>Tablas para queso</h3>
-                        <p class="proyecto-desc">Diseñadas en madera natural de alta calidad, estas tablas combinan resistencia, belleza y funcionalidad. Perfectas para servir quesos, embutidos, frutas secas o chocolates.</p>
+                        <p class="proyecto-desc">Diseñadas en madera natural de alta calidad, estas tablas combinan resistencia, belleza y funcionalidad para servir quesos y embutidos.</p>
                     </div>
                 </div>
             </div>
@@ -478,7 +576,7 @@
             <div class="cta-proyectos">
                 <h2>¿Te gustaría ver tu proyecto aquí?</h2>
                 <p>Contáctanos y comencemos a trabajar en la transformación de tus espacios.</p>
-                <a href="proceso.html" class="btn btn-large">Contactanos</a>
+                <a href="proceso.html" class="btn-large">Contáctanos</a>
             </div>
         </div>
     </section>
@@ -494,10 +592,7 @@
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3748.102762546342!2d-98.72903212661991!3d20.04613797964586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842eeef8364d9bcf%3A0xd7ba69856107117d!2sHidrosistemas!5e0!3m2!1sen!2smx!4v1760387857696!5m2!1sen!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
                                 width="100%" 
                                 height="100%" 
-                                style="border:0" 
-                                allowfullscreen="" 
-                                loading="lazy" 
-                                referrerpolicy="no-referrer-when-downgrade">
+                                style="border:0">
                             </iframe>
                         </div>
                     </div>
@@ -513,33 +608,33 @@
                                     <p>Circuito Emprendedores No. 19, Parque Industrial Metropolitano, Mineral de la Reforma, Hgo. CP 42186</p>
                                 </div>
                             </div>
-                            <div class="contact-container">
+                            
                             <div class="contact-item">
                                 <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
+                                    <i class="fas fa-phone"></i>
                                 </div>
                                 <div class="contact-text">
-                                <h4>Teléfonos</h4>
-                                <p>
-                                    <a href="tel:+527717132513">771 713 2513</a><br>
-                                    <a href="tel:+527717132514">771 713 2514</a><br>
-                                    <a href="tel:+527717181044">771 718 1044</a>
-                                </p>
+                                    <h4>Teléfonos</h4>
+                                    <p>
+                                        <a href="tel:+527717132513">771 713 2513</a><br>
+                                        <a href="tel:+527717132514">771 713 2514</a><br>
+                                        <a href="tel:+527717181044">771 718 1044</a>
+                                    </p>
                                 </div>
                             </div>
 
                             <div class="contact-item whatsapp-item">
-                                <div class="contact-icon contact-whatsapp-icon">
-                                <i class="fab fa-whatsapp"></i>
+                                <div class="contact-icon">
+                                    <i class="fab fa-whatsapp"></i>
                                 </div>
-                                <div class="contact-whatsapp">
-                                <h4>WhatsApp</h4>
-                                <p>
-                                    <a href="https://wa.me/52771712167150" target="_blank">771 712 167 150</a>
-                                </p>
+                                <div class="contact-text">
+                                    <h4>WhatsApp</h4>
+                                    <p>
+                                        <a href="https://wa.me/52771712167150" target="_blank">771 712 167 150</a>
+                                    </p>
                                 </div>
                             </div>
-                            </div>
+
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <i class="fas fa-envelope"></i>
@@ -549,6 +644,7 @@
                                     <p><a href="mailto:ventas@hidrosistemas.com.mx">ventas@hidrosistemas.com.mx</a></p>
                                 </div>
                             </div>
+                            
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <i class="fas fa-clock"></i>
@@ -572,21 +668,11 @@
         </svg>
     </button>
 
-    <!-- Footer -->
-  <div id="footer-container"></div>
+    <div id="footer-container"></div>
 
-    <!-- Bootstrap JavaScript Libraries -->
-    <script
-        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"
-    ></script>
-
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"
-    ></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 
     <script>
         // Animación de elementos al hacer scroll
@@ -609,12 +695,10 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                         
-                        // Animación para títulos de sección
                         if (entry.target.classList.contains('section-title')) {
                             entry.target.classList.add('animated');
                         }
                         
-                        // Animación escalonada para proyectos
                         if (entry.target.classList.contains('proyectos-grid')) {
                             proyectoCards.forEach((card, index) => {
                                 setTimeout(() => {
@@ -623,14 +707,12 @@
                             });
                         }
                         
-                        // Animación para CTA
                         if (entry.target.classList.contains('cta-proyectos')) {
                             setTimeout(() => {
                                 ctaProyectos.classList.add('animated');
                             }, 300);
                         }
                         
-                        // Animación para botones de filtro
                         if (entry.target.classList.contains('filtros-proyectos')) {
                             filtroBtns.forEach((btn, index) => {
                                 setTimeout(() => {
@@ -639,7 +721,6 @@
                             });
                         }
                         
-                        // Animación para mapa y contacto
                         if (entry.target.classList.contains('contact-content')) {
                             setTimeout(() => {
                                 if (mapVisual) mapVisual.classList.add('animated');
@@ -653,7 +734,6 @@
                 });
             }, observerOptions);
             
-            // Observar elementos para animaciones
             fadeElements.forEach(el => observer.observe(el));
             sectionTitles.forEach(title => observer.observe(title));
             document.querySelector('.proyectos-grid') && observer.observe(document.querySelector('.proyectos-grid'));
@@ -661,7 +741,6 @@
             document.querySelector('.filtros-proyectos') && observer.observe(document.querySelector('.filtros-proyectos'));
             document.querySelector('.contact-content') && observer.observe(document.querySelector('.contact-content'));
             
-            // Activar animaciones para elementos ya visibles al cargar
             setTimeout(() => {
                 fadeElements.forEach(el => {
                     const rect = el.getBoundingClientRect();
@@ -675,32 +754,25 @@
         // Filtrado de proyectos con animaciones
         document.querySelectorAll('.filtro-btn').forEach(button => {
             button.addEventListener('click', function() {
-                // Remover clase active de todos los botones
                 document.querySelectorAll('.filtro-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
                 
-                // Agregar clase active al botón clickeado
                 this.classList.add('active');
                 
-                // Obtener la categoría a filtrar
                 const categoria = this.getAttribute('data-categoria');
                 
-                // Animación de filtrado
                 document.querySelectorAll('.proyecto-card').forEach(proyecto => {
                     const proyectoCategoria = proyecto.getAttribute('data-categoria');
                     
                     if (categoria === 'todos' || proyectoCategoria === categoria) {
-                        // Proyecto debe mostrarse
                         proyecto.classList.remove('filtered-out');
                         proyecto.classList.add('filtered-in');
                         proyecto.style.display = 'block';
                     } else {
-                        // Proyecto debe ocultarse
                         proyecto.classList.remove('filtered-in');
                         proyecto.classList.add('filtered-out');
                         
-                        // Ocultar después de la animación
                         setTimeout(() => {
                             proyecto.style.display = 'none';
                         }, 500);

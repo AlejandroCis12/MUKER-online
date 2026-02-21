@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="PRACTIK-BOX — Diseños personalizados en madera" />
-    <meta name="description" content="Somos especialistas en crear muebles únicos que se adaptan a tus necesidades y espacios. Cada pieza es fabricada con madera de la más alta calidad.
-    " />
+    <meta name="description" content="Somos especialistas en crear muebles únicos que se adaptan a tus necesidades y espacios. Cada pieza es fabricada con madera de la más alta calidad." />
     <meta name="author" content="A Regular Page by EduardoPP & AlejandroSC">
     <meta name="robots" content="index, follow">
     <meta name="copyright" content="PRACTIK-BOX" />
@@ -15,6 +14,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="Imagenes/Index/icon.png" type="image/png">
     <style>
+        /* ===== TUS ESTILOS ORIGINALES ===== */
+        
         /* Hero Section para Proceso */
         .hero-proceso {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('Imagenes/Proceso/hero-proceso.jpg') no-repeat center center;
@@ -53,7 +54,7 @@
             position: absolute;
             width: 80px;
             height: 3px;
-            background-color: var(--color-primary);
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
@@ -77,6 +78,7 @@
             background: white;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
         .paso p{
             text-align: justify;
@@ -85,7 +87,7 @@
             display: inline-block;
             width: 50px;
             height: 50px;
-            background: var(--color-primary);
+            background: var(--color-accent);
             color: white;
             border-radius: 50%;
             text-align: center;
@@ -93,24 +95,60 @@
             font-size: 1.5rem;
             font-weight: bold;
             margin-bottom: 1rem;
+            transition: all 0.3s ease;
         }
         .paso:hover{
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 150%);
             color: white;
+            transform: translateY(-8px);
         }
         .paso:hover h3{
-            color: var(--color-neutral);
+            color: white;
         } 
         .paso:hover .paso-numero{
             background: white;
             color: var(--color-primary);
         }
+
+        /* BOTÓN DE WHATSAPP */
+        .btn-wsp-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .btn-wsp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-wsp i {
+            font-size: 1.5rem;
+        }
+        
+        .btn-wsp:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+            background: linear-gradient(135deg, var(--color-secondary) 0%, #25D366 100%);
+        }
+
         /* Formulario de cotización */
         .formulario-cotizacion {
             background: white;
             padding: 3rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid rgba(124, 119, 74, 0.1);
         }
         .form-grid {
             grid-template-columns: 1fr 1fr;
@@ -134,6 +172,13 @@
             border-radius: 5px;
             font-family: 'Open Sans', sans-serif;
             font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus, textarea:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(124, 119, 74, 0.2);
+            border-color: var(--color-accent);
+            outline: none;
         }
         textarea {
             min-height: 120px;
@@ -150,8 +195,8 @@
         }
         .file-upload-btn {
             background: var(--color-light);
-            border: 2px dashed var(--color-primary);
-            color: var(--color-primary);
+            border: 2px dashed var(--color-accent);
+            color: var(--color-accent);
             padding: 1rem;
             border-radius: 5px;
             text-align: center;
@@ -161,6 +206,8 @@
         }
         .file-upload-btn:hover {
             background: var(--color-secondary);
+            border-color: var(--color-secondary);
+            color: white;
         }
         .file-upload input[type="file"] {
             position: absolute;
@@ -174,8 +221,21 @@
         .btn-large {
             padding: 1rem 2rem;
             font-size: 1.1rem;
-            border-color: var(--color-neutral);
+            background: linear-gradient(135deg, var(--color-accent) 0%, #5a5536 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(124, 119, 74, 0.3);
         }
+        .btn-large:hover {
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(124, 119, 74, 0.5);
+        }
+
         /* Tipos de madera */
         .maderas-grid {
             display: grid;
@@ -194,7 +254,8 @@
             text-align: justify;
         }
         .madera-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(124, 119, 74, 0.15);
         }
         .madera-img {
             width: 100%;
@@ -202,12 +263,18 @@
             border-radius: 5px;
             overflow: hidden;
             margin-bottom: 1rem;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        .madera-card:hover .madera-img {
+            border-color: var(--color-accent);
         }
         .madera-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+
         /* FAQ */
         .faq-section {
             background: white;
@@ -226,6 +293,14 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .faq-question:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+        .faq-question:hover i {
+            color: white;
         }
         .faq-answer {
             padding: 0 1.5rem;
@@ -239,10 +314,12 @@
         }
         .faq-question i {
             transition: transform 0.3s;
+            color: var(--color-accent);
         }
         .faq-item.active .faq-question i {
             transform: rotate(180deg);
         }
+
         /* Modal de agradecimiento */
         .modal-overlay {
             display: none;
@@ -264,12 +341,12 @@
             max-width: 500px;
             width: 90%;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 3px solid var(--color-accent);
         }
         .modal-content i {
-            font-size: 2rem;
-            color: white;
-            margin-bottom: 1.2rem;
-            padding-top: 20px;
+            font-size: 4rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
         }
         .modal-content h2 {
             font-size: 1.8rem;
@@ -285,16 +362,20 @@
             color: white;
             border: none;
             padding: 0.7rem 1.5rem;
-            border-radius: 5px;
+            border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
             font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
         .btn-close:hover {
             background: var(--color-secondary);
+            transform: translateY(-3px);
         }
+
         /* ANIMACIONES */
-        /* Animaciones de entrada */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -304,7 +385,8 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Animación para hero */
+
+        /* Hero animation */
         .hero-proceso .hero-content {
             opacity: 0;
             transform: translateY(40px);
@@ -316,25 +398,22 @@
                 transform: translateY(0);
             }
         }
-        /* Animación para títulos de sección */
-        .section-title h2 {
-            position: relative;
-            overflow: hidden;
-        }
+
+        /* Section titles animation */
         .section-title h2::after {
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 0;
             width: 0;
             height: 3px;
-            background: var(--color-primary);
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
             transition: width 0.8s ease;
         }
         .section-title.animated h2::after {
             width: 100%;
         }
-        /* Animación para pasos del proceso */
+
+        /* Pasos animation */
         .paso {
             opacity: 0;
             transform: translateY(30px) scale(0.95);
@@ -344,18 +423,8 @@
             opacity: 1;
             transform: translateY(0) scale(1);
         }
-        .paso:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        /* Animación para números de pasos */
-        .paso-numero {
-            transition: all 0.4s ease;
-        }
-        .paso:hover .paso-numero {
-            transform: scale(1.2) rotate(10deg);
-        }
-        /* Animación para formulario */
+
+        /* Form groups animation */
         .form-group {
             transform: translateX(-20px);
             transition: all 0.5s ease;
@@ -364,38 +433,8 @@
             opacity: 1;
             transform: translateX(0);
         }
-        /* Animación para inputs del formulario */
-        input, select, textarea {
-            transition: all 0.3s ease;
-        }
-        input:focus, select:focus, textarea:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-color: var(--color-primary);
-        }
-        /* Animación para botón de archivo */
-        .file-upload-btn {
-            transition: all 0.3s ease;
-        }
-        .file-upload-btn:hover {
-            transform: translateY(-3px);
-            border-color: var(--color-accent);
-        }      
-        /* Animación para tarjetas de estilos */
-        .estilo-card {
-            opacity: 0;
-            transform: translateY(30px) rotateX(10deg);
-            transition: all 0.6s ease;
-        }
-        .estilo-card.animated {
-            opacity: 1;
-            transform: translateY(0) rotateX(0);
-        }
-        .estilo-card:hover {
-            transform: translateY(-10px) rotateX(0);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        /* Animación para tarjetas de maderas */
+
+        /* Madera cards animation */
         .madera-card {
             opacity: 0;
             transform: scale(0.9);
@@ -405,10 +444,8 @@
             opacity: 1;
             transform: scale(1);
         }
-        .madera-card:hover {
-            transform: translateY(-8px) scale(1.05);
-        }
-        /* Animación para FAQ */
+
+        /* FAQ items animation */
         .faq-item {
             opacity: 0;
             transform: translateY(20px);
@@ -418,14 +455,8 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .faq-question {
-            transition: all 0.3s ease;
-        }
-        .faq-item:hover .faq-question {
-            background: var(--color-primary);
-            color: white;
-        }
-        /* Animación para modal */
+
+        /* Modal animation */
         .modal-content {
             opacity: 0;
             transform: scale(0.8) translateY(-50px);
@@ -435,32 +466,8 @@
             opacity: 1;
             transform: scale(1) translateY(0);
         }
-        /* Animación para imágenes */
-        .estilo-img, .madera-img {
-            position: relative;
-            overflow: hidden;
-        }
-        .estilo-img::before, .madera-img::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.4),
-                transparent
-            );
-            transition: left 0.8s ease;
-            z-index: 1;
-        }
-        .estilo-card:hover .estilo-img::before,
-        .madera-card:hover .madera-img::before {
-            left: 100%;
-        }
-        /* Animación de carga para el formulario */
+
+        /* Loading animation */
         .btn-loading {
             position: relative;
             color: transparent;
@@ -482,6 +489,49 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        /* ===== LÍNEA DECORATIVA DEL HEADER ===== */
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-secondary) 0%, #e5a047 100%);
+            box-shadow: 0 2px 10px rgba(199, 142, 62, 0.5);
+            z-index: 1001;
+        }
+
+        header {
+            position: relative !important;
+        }
+
+        /* ===== BOTÓN SCROLL TOP ===== */
+        .btn-scroll-top {
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+            box-shadow: 0 4px 20px rgba(124, 119, 74, 0.3);
+        }
+
+        .btn-scroll-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(124, 119, 74, 0.5);
+        }
+
+        /* ===== CONTACTO ===== */
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+        }
+
+        .whatsapp-item .contact-icon {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        }
+
+        .whatsapp-item:hover .contact-icon {
+            background: linear-gradient(135deg, var(--color-secondary) 0%, #25D366 100%);
+        }
+
         /* Responsive */
         @media (max-width: 968px) {
             .form-grid {
@@ -501,8 +551,9 @@
             .formulario-cotizacion {
                 padding: 2rem;
             }
-            .estilos-grid, .proyectos-grid {
-                grid-template-columns: 1fr;
+            .btn-wsp {
+                padding: 12px 25px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -510,6 +561,7 @@
 </head>
 <body>
    <div id="header-container"></div>
+
     <!-- Hero Section para Proceso -->
     <section class="hero-proceso">
         <div class="container">
@@ -519,6 +571,7 @@
             </div>
         </div>
     </section>
+
     <!-- Proceso de cotización -->
     <section class="section proceso-cotizacion">
         <div class="container">
@@ -526,11 +579,12 @@
                 <h2>¿Cómo funciona nuestro proceso?</h2>
                 <p>Cuatro simples pasos para obtener tu cotización personalizada.</p>
             </div>
+            
             <div class="pasos-proceso">
                 <div class="paso">
                     <div class="paso-numero">1</div>
                     <h3>Solicitud de cotización</h3>
-                    <p>Completa nuestro formulario con los detalles de tu proyecto.</p>
+                    <p>Completa el formulario con los detalles de tu proyecto.</p>
                 </div>
                 <div class="paso">
                     <div class="paso-numero">2</div>
@@ -548,6 +602,16 @@
                     <p>Una vez aprobado y recibido el anticipo, comenzamos la fabricación de tu mueble.</p>
                 </div>
             </div>
+
+            <!-- BOTÓN DE WHATSAPP AGREGADO -->
+            <div class="btn-wsp-container">
+                <a href="https://wa.me/527717121671" target="_blank" class="btn-wsp">
+                    <i class="fab fa-whatsapp"></i>
+                    Cotiza por WhatsApp
+                </a>
+                <p style="margin-top: 10px; color: #666;">Respuesta en menos de 24 horas</p>
+            </div>
+
             <div class="formulario-cotizacion">
                 <h2 style="text-align: center; margin-bottom: 2rem;" class="fade-in">Solicita tu cotización</h2>
                 <form id="cotizacion-form">
@@ -570,7 +634,6 @@
                                         </select>
                                     </div>
                                 
-                                    
                                     <!-- Cocina -->
                                     <div class="form-group col-md-6 mueble-cocina" ng-if="selectOption == 'Muebles de cocina'" ng-cloak>
                                         <label class="control-label">Tipo de mueble de cocina *</label>
@@ -645,13 +708,14 @@
                         </div>
                         
                         <div class="form-group full-width" style="text-align: center; margin-top: 2rem;">
-                            <button type="submit" class="btn btn-large">Enviar solicitud de cotización</button>
+                            <button type="submit" class="btn-large">Enviar solicitud de cotización</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </section>
+
     <!-- Preguntas frecuentes -->
     <section class="section faq-section">
         <div class="container">
@@ -700,6 +764,7 @@
             </div>
         </div>
     </section>
+
     <!-- Sección: En Dónde Estamos -->
     <section class="contact-section" id="contacto">
         <div class="container">
@@ -711,10 +776,7 @@
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3748.102762546342!2d-98.72903212661991!3d20.04613797964586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842eeef8364d9bcf%3A0xd7ba69856107117d!2sHidrosistemas!5e0!3m2!1sen!2smx!4v1760387857696!5m2!1sen!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
                                 width="100%" 
                                 height="100%" 
-                                style="border:0" 
-                                allowfullscreen="" 
-                                loading="lazy" 
-                                referrerpolicy="no-referrer-when-downgrade">
+                                style="border:0">
                             </iframe>
                         </div>
                     </div>
@@ -744,10 +806,10 @@
                                 </div>
                             </div>
                             <div class="contact-item whatsapp-item">
-                                <div class="contact-icon contact-whatsapp-icon">
+                                <div class="contact-icon">
                                     <i class="fab fa-whatsapp"></i>
                                 </div>
-                                <div class="contact-whatsapp">
+                                <div class="contact-text">
                                     <h4>WhatsApp</h4>
                                     <p>
                                         <a href="https://wa.me/527717121671" target="_blank">771 712 1671</a>
@@ -779,11 +841,13 @@
             </div>
         </div>
     </section>
+
     <button class="btn-scroll-top" aria-label="Volver arriba">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M12 4l-8 8h5v8h6v-8h5z"/>
         </svg>
     </button>
+
     <!-- Modal de agradecimiento -->
     <div class="modal-overlay" id="graciasModal">
         <div class="modal-content">
@@ -798,7 +862,6 @@
             <button class="btn-close" onclick="cerrarModal()">Cerrar</button>
         </div>
     </div>
-    <!-- Footer -->
 
     <div id="footer-container"></div>
 
@@ -807,6 +870,7 @@
         function cerrarModal() {
             document.getElementById('graciasModal').style.display = 'none';
         }
+
         // FAQ acordeón
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
@@ -819,7 +883,7 @@
             e.preventDefault();
             
             // Validar campos obligatorios básicos
-            const requiredFields = ['nombre', 'email', 'telefono', 'color', 'tipo_mueble'];
+            const requiredFields = ['nombre', 'email', 'telefono', 'tipo_mueble'];
             let isValid = true;
             
             for (let field of requiredFields) {
@@ -892,22 +956,25 @@
             const sectionTitles = document.querySelectorAll('.section-title');
             const pasos = document.querySelectorAll('.paso');
             const formGroups = document.querySelectorAll('.form-group');
-            const estiloCards = document.querySelectorAll('.estilo-card');
             const maderaCards = document.querySelectorAll('.madera-card');
             const faqItems = document.querySelectorAll('.faq-item');
             const mapVisual = document.querySelector('.map-visual');
             const contactInfo = document.querySelector('.contact-info-section');
+            
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
             };
+            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                        
                         if (entry.target.classList.contains('section-title')) {
                             entry.target.classList.add('animated');
                         }
+                        
                         if (entry.target.classList.contains('pasos-proceso')) {
                             pasos.forEach((paso, index) => {
                                 setTimeout(() => {
@@ -915,6 +982,7 @@
                                 }, index * 200);
                             });
                         }
+                        
                         if (entry.target.classList.contains('form-grid')) {
                             formGroups.forEach((group, index) => {
                                 setTimeout(() => {
@@ -922,13 +990,7 @@
                                 }, index * 100);
                             });
                         }
-                        if (entry.target.classList.contains('estilos-grid')) {
-                            estiloCards.forEach((card, index) => {
-                                setTimeout(() => {
-                                    card.classList.add('animated');
-                                }, index * 150);
-                            });
-                        }
+                        
                         if (entry.target.classList.contains('maderas-grid')) {
                             maderaCards.forEach((card, index) => {
                                 setTimeout(() => {
@@ -936,6 +998,7 @@
                                 }, index * 100);
                             });
                         }
+                        
                         if (entry.target.classList.contains('faq-container')) {
                             faqItems.forEach((item, index) => {
                                 setTimeout(() => {
@@ -943,6 +1006,7 @@
                                 }, index * 100);
                             });
                         }
+                        
                         if (entry.target.classList.contains('contact-content')) {
                             setTimeout(() => {
                                 if (mapVisual) mapVisual.classList.add('animated');
@@ -959,7 +1023,6 @@
             sectionTitles.forEach(title => observer.observe(title));
             document.querySelector('.pasos-proceso') && observer.observe(document.querySelector('.pasos-proceso'));
             document.querySelector('.form-grid') && observer.observe(document.querySelector('.form-grid'));
-            document.querySelector('.estilos-grid') && observer.observe(document.querySelector('.estilos-grid'));
             document.querySelector('.maderas-grid') && observer.observe(document.querySelector('.maderas-grid'));
             document.querySelector('.faq-container') && observer.observe(document.querySelector('.faq-container'));
             document.querySelector('.contact-content') && observer.observe(document.querySelector('.contact-content'));
