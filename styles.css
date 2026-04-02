@@ -25,7 +25,6 @@ body {
     color: var(--color-text);
     background-color: var(--color-neutral);
     color-scheme: only light;
-    background-image: url(Imagenes/Proyectos/MUKER.png);
     background-position: center;
 }
 
@@ -107,10 +106,9 @@ header::after {
 }
 
 .fondo{
-    background-color: white;
     padding: 8px 10px;
     border-radius: 15px;
-    color: var(--color-primary);
+    color: var(--color-neutral);
     font-weight: 800;
 }
 
