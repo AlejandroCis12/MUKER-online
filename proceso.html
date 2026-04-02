@@ -610,107 +610,6 @@
                 </a>
             </div>
 
-            <div class="formulario-cotizacion">
-                <h2 style="text-align: center; margin-bottom: 2rem;" class="fade-in">Solicita tu cotización</h2>
-                <form id="cotizacion-form">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <div class="row" ng-controller="ctrl">
-                                <div class="col-md-12">
-                                    <div class="form-group col-md-6">
-                                        <label class="control-label">Tipo de mueble *</label>
-                                        <select class="form-control" ng-model="selectOption" name="tipo_mueble" required>
-                                            <option value="">Selecciona un tipo</option>
-                                            <option value="Closet o vestidor">Closet o vestidor</option>
-                                            <option value="Muebles de cocina">Muebles de cocina</option>
-                                            <option value="Muebles de baño">Muebles de baño</option>
-                                            <option value="Libreria o repisa">Libreria o repisa</option>
-                                            <option value="Armarios">Armarios</option>
-                                            <option value="Muebles de oficina">Muebles de oficina</option>
-                                            <option value="Pergola">Pergola</option>
-                                            <option value="Accesorios">Accesorios</option>
-                                        </select>
-                                    </div>
-                                
-                                    <!-- Cocina -->
-                                    <div class="form-group col-md-6 mueble-cocina" ng-if="selectOption == 'Muebles de cocina'" ng-cloak>
-                                        <label class="control-label">Tipo de mueble de cocina *</label>
-                                        <select class="form-control" ng-model="selectOptionC" name="tipo_cocina" required>
-                                            <option value="">Selecciona un tipo</option>
-                                            <option value="Mueble para cafetera">Mueble para cafetera</option>
-                                            <option value="Estanterias">Estanterias</option>
-                                            <option value="Gabinetes">Gabinetes</option>
-                                            <option value="Otro">Otro</option>
-                                        </select>               
-                                        <div class="form-group col-md-12 mueble-cocina" ng-if="selectOptionC == 'Otro'" ng-cloak>
-                                            <label class="control-label">Especifica el tipo de mueble de cocina *</label>
-                                            <input type="text" class="form-control" placeholder="" name="otro_cocina">
-                                        </div> 
-                                    </div>
-                                                                                        
-                                    <!-- Oficina -->
-                                    <div class="form-group col-md-6 mueble-cocina" ng-if="selectOption == 'Muebles de oficina'" ng-cloak>
-                                        <label class="control-label">Tipo de mueble de oficina *</label>
-                                        <select class="form-control" ng-model="selectOptionO" name="tipo_oficina" required>
-                                            <option value="">Selecciona un tipo</option>
-                                            <option value="Escritorios">Escritorios</option>
-                                            <option value="Estanterias">Estanterias</option>
-                                            <option value="Gabinetes">Gabinetes</option>
-                                            <option value="Otro">Otro</option>
-                                        </select>
-                                        <div class="form-group col-md-6 mueble-cocina" ng-if="selectOptionO == 'Otro'" ng-cloak>
-                                            <label class="control-label">Especifica el tipo de mueble</label>
-                                            <input type="text" class="form-control" placeholder="" name="otro_oficina">
-                                        </div>
-                                    </div>
-                                                                    
-                                    <!-- Accesorios -->
-                                    <div class="form-group col-md-6 mueble-cocina" ng-if="selectOption == 'Accesorios'" ng-cloak>
-                                        <label class="control-label">Tipo de accesorio *</label>
-                                        <select class="form-control" ng-model="selectOptionA" name="tipo_accesorio" required>
-                                            <option value="">Selecciona un tipo</option>
-                                            <option value="Cajas de té">Cajas de té</option>
-                                            <option value="Tablas">Tablas</option>
-                                            <option value="Centro de mesa">Centro de mesa</option>
-                                            <option value="Banquito">Banquito</option>
-                                            <option value="Bote de basura">Bote de basura</option>
-                                            <option value="Macetas">Macetas</option>
-                                            <option value="Porta huevos">Porta huevos</option>
-                                            <option value="Tablas para baguette">Tablas para baguette</option>
-                                            <option value="Soporte para velas">Soporte para velas</option>
-                                            <option value="Otros">Otros</option>
-                                        </select>
-                                        
-                                        <div class="form-group col-md-6 mueble-cocina" ng-if="selectOptionA == 'Otros'" ng-cloak>
-                                            <label class="control-label">Especifica el tipo de Accesorio</label>
-                                            <input type="text" class="form-control" placeholder="" name="otro_accesorio">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                                                
-                        <div class="form-group">
-                            <label for="nombre">Nombre completo *</label>
-                            <input type="text" id="nombre" name="nombre" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Correo electrónico *</label>
-                            <input type="email" id="email" name="email" autocomplete="on" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="telefono">Teléfono de contacto *</label>
-                            <input type="tel" id="telefono" name="telefono" required>
-                        </div>
-                        
-                        <div class="form-group full-width" style="text-align: center; margin-top: 2rem;">
-                            <button type="submit" class="btn-large">Enviar solicitud de cotización</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
         </div>
     </section>
 
@@ -739,6 +638,15 @@
                     <div class="faq-answer">
                         <p>No, la cotización inicial es completamente gratuita.<br> 
                             Si requieres planos detallados o maquetas en 3D tendrá un costo adicional, que será informado previamente.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿La visita tiene un costo adicional?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>La visita tiene un costo adicional segun el kilometraje, bonificable a la hora de la compra.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -798,77 +706,6 @@
                 const item = question.parentNode;
                 item.classList.toggle('active');
             });
-        });
-
-        document.getElementById('cotizacion-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Validar campos obligatorios básicos
-            const requiredFields = ['nombre', 'email', 'telefono', 'tipo_mueble'];
-            let isValid = true;
-            
-            for (let field of requiredFields) {
-                const el = document.querySelector(`[name="${field}"]`);
-                if (el && !el.value.trim()) {
-                    alert('Por favor, completa todos los campos obligatorios (*).');
-                    isValid = false;
-                    break;
-                }
-            }
-            
-            if (!isValid) return;
-
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = 'Enviando...';
-            submitBtn.classList.add('btn-loading');
-            submitBtn.disabled = true;
-
-            const formData = new FormData();
-
-            // Capturar todos los campos del formulario
-            const formElements = this.elements;
-            for (let element of formElements) {
-                if (element.name && element.value) {
-                    formData.append(element.name, element.value.trim());
-                }
-            }
-
-            // Configuración de FormSubmit
-            formData.append('_subject', 'Nueva solicitud de cotización - PRACTIK-BOX');
-            formData.append('_template', 'table');
-            formData.append('_captcha', 'false');
-
-            try {
-                const response = await fetch('https://formsubmit.co/ajax/ea439921@gmail.com', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                if (response.ok) {
-                    document.getElementById('graciasModal').style.display = 'flex';
-                    this.reset();
-
-                    // Resetear Angular
-                    const ctrlEl = document.querySelector('[ng-controller="ctrl"]');
-                    const scope = angular.element(ctrlEl).scope();
-                    scope.$apply(() => {
-                        scope.selectOption = null;
-                        scope.selectOptionC = null;
-                        scope.selectOptionO = null;
-                        scope.selectOptionA = null;
-                    });
-                } else {
-                    alert('Error al enviar. Inténtalo de nuevo.');
-                }
-            } catch (err) {
-                alert('Error de conexión. Verifica tu internet.');
-                console.error(err);
-            } finally {
-                submitBtn.innerHTML = originalText;
-                submitBtn.classList.remove('btn-loading');
-                submitBtn.disabled = false;
-            }
         });
 
         // Animación de elementos al hacer scroll
